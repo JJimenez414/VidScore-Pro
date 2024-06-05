@@ -1,10 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import axios from "axios"
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  const fetchAPI = async() => {
+    const response = await axios.get("http://127.0.0.1:8080/api/users")
+    console.log(response.data.users)
+  }
+
+  useEffect( () => {
+    fetchAPI();
+  }, []);
+
 
   return (
     <>
@@ -16,11 +27,8 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-<<<<<<< HEAD
       <h1>Jose and Carlos</h1>
-=======
       <h1>Vite</h1>
->>>>>>> f66b1d155085191c3b7ddb833c1acc49ce91bd74
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
