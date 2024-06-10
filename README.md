@@ -6,6 +6,6 @@ Client Server:
 Backend Server:
 
 (Windows)
-- source server/scripts/activate
+- source server/Scripts/activate
 (Mac)
 - source venv/lib/activate
