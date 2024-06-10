@@ -1,8 +1,10 @@
-
+import logoDrop from "/src/assets/dropbox.svg"
 
 function FileDrop () {
     return (
-        <h1>This is FileDrop</h1>
+        <div className="fileDropBox">
+            <img src={logoDrop} alt="" className="dropImg" />
+        </div>
     )
 }
 

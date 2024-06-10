@@ -1,8 +1,11 @@
-
+import FileDrop from "./FileDrop";
 
 function Dropdown() {
     return  (
-        <h1>This is dropdown box</h1>
+
+        <div className="dropBox"> 
+            <FileDrop/>
+        </div>
     )
 }
 

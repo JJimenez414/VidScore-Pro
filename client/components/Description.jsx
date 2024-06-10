@@ -2,7 +2,10 @@
 
 function Description() {
     return ( 
-      <h1>This is description</h1>
+
+      <div className="description"> 
+        <h1>This is description</h1>
+      </div>
     )
 }
 
