@@ -2,7 +2,7 @@
 
 function FileDrop () {
     return (
-        <h1>This is FileDriop</h1>
+        <h1>This is FileDrop</h1>
     )
 }
 
