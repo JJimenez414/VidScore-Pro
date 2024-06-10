@@ -18,11 +18,55 @@ body {
 }
 
 .header h1 {
-  height: 100%;
-  float: left;
-  width: 100%;
-  text-align: center;
   font-family: 'Lobster', sans-serif;
+  text-align: center;
   font-size: 4rem;
   margin: 0px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 83vh;
+  width: 100vw;
+}
+
+.container h1 {
+  margin: 0;
+  float: left;
+  text-align: center;
+}
+
+.dropBox {
+  /* center a div in a center */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 65%;
+  border-right: 1px solid black;
+}
+
+.description {
+  height: 100%;
+  width: 35%;
+}
+
+.fileDropBox {
+  display: flex;
+  
+  height: 50%;
+  width: 70%;
+  background-color: #D3D3D3;
+  border-radius: 25px;
+}
+
+.fileDropBox:hover {
+  background-color: #808080;
+}
+
+.dropImg {
+  height: 100px;
+  width: 100px;
 }
