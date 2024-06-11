@@ -8,7 +8,7 @@ def index():
     return video_length()
 
 
-
+# Function will locate video file and get duration of clip, and test to see if the duration meets the ideal length. Returns string
 def video_length():
 
     video = VideoFileClip('./videos/video1.mp4')
@@ -16,10 +16,13 @@ def video_length():
 
     minutes, seconds = divmod(duration, 60)
 
-    if seconds > 35:
-        return f"The video is too long. {int(seconds)} seconds is {int(seconds - 35)} seconds much longer than the ideal range"
+    seconds = seconds + (minutes * 60)
+
+    ideal_length = 45
+    if seconds > ideal_length:
+        return f"The video is too long. {int(seconds)} seconds is {int(seconds - ideal_length)} seconds much longer than the ideal range"
     else:
-        return f"The video is a good length. At {int(seconds)} seconds, the video is {int(35 - seconds)} seconds below ideal range."
+        return f"The video is a good length. At {int(seconds)} seconds, the video is {int(ideal_length - seconds)} seconds below ideal range."
 
 
 
