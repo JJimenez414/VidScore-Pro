@@ -53,20 +53,43 @@ body {
   width: 35%;
 }
 
-.fileDropBox {
+#inputLabel {
+  height: 85%;
+  width: 90%;
+}
+
+
+.dropBoxContainer {
   display: flex;
-  
+  align-items: center;
+  justify-content: center;
   height: 50%;
   width: 70%;
   background-color: #D3D3D3;
   border-radius: 25px;
 }
 
-.fileDropBox:hover {
-  background-color: #808080;
+.dropBoxFile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: dashed #808080 2px;
+  height: 100%;
+  width: 100%;
+  border-radius: 25px;
 }
 
-.dropImg {
+.dropBoxFile:hover {
+  background-color: #808080;
+  border: dashed black 2px
+}
+
+.dropBoxFile p {
+  font-size: 30px;
+  font-family: "Roboto", sans-serif;
+}
+
+.boxImg {
   height: 100px;
   width: 100px;
 }
