@@ -1,6 +1,6 @@
 import Video from "./Video";
 import logoDrop from "/src/assets/dropbox.svg"
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 function FileDrop () {
 

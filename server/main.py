@@ -1,13 +1,29 @@
-from flask import Flask, render_template
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 from moviepy.editor import VideoFileClip
 import cv2
 
 
 app = Flask(__name__)
+cors = CORS(app, origins="*")
 
 @app.route('/')
-def index():
-    return video_resolution()
+
+# Jose Fetch/Catch
+@app.route('/Video')
+def video():
+    response = {'message': 'world'}
+    return response
+
+@app.route('/gVideo', methods=['POST'])
+def gVideo():
+    postID = 2
+    vFile = request.json['videoFile']
+    print(vFile)
+    return {'id': postID}
+
+# def index():
+#     return video_resolution()
 
 
 # Function will locate video file and get duration of clip, and test to see if the duration meets the ideal length. Returns string
