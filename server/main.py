@@ -10,15 +10,15 @@ cors = CORS(app, origins="*")
 @app.route('/')
 
 # Jose Fetch/Catch
-@app.route('/Video')
-def video():
-    response = {'message': 'world'}
+@app.route('/getVideo')
+def getVideo():
+    response = {'message': 'bye!'}
     return response
 
-@app.route('/gVideo', methods=['POST'])
-def gVideo():
+@app.route('/postVideo', methods=['POST'])
+def postVideo():
     postID = 2
-    vFile = request.json['videoFile']
+    vFile = request.json['data']
     print(vFile)
     return {'id': postID}
 

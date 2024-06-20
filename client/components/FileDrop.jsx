@@ -10,9 +10,7 @@ function FileDrop () {
         event.preventDefault();
         if (event.target.files.length != 0) {
             setFile(() => { 
-                
                 return URL.createObjectURL(event.target.files[0])
-                
                 });
         }   
     }
@@ -24,9 +22,8 @@ function FileDrop () {
                 <div className="dropBoxFile">
                     <img src={logoDrop} alt="" className="boxImg"/>
                     <p>File Drop</p>
-
                     {File && (
-                        <Video videoFile={File} />
+                        <Video videoId={File} videoFile={File} />
                     )}
 
                 </div>
