@@ -1,8 +1,8 @@
 import Dropdown from "../components/Dropdown"
 import Description from "../components/Description"
 import Header from "../components/Header"
-import Request from "../components/APIRequest"
-import { useState, useEffect } from 'react'
+// import Request from "../components/APIRequest"
+// import { useState, useEffect } from 'react'
 import './App.css'
 
 
