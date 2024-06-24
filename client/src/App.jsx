@@ -1,4 +1,4 @@
-import Dropdown from "../components/Dropdown"
+import DropContainer from "../components/DropContainer"
 import Description from "../components/Description"
 import Header from "../components/Header"
 // import Request from "../components/APIRequest"
@@ -9,21 +9,12 @@ import './App.css'
 function App() {
   
 
-  // const [message, setMessage] = useState('');
-  //   useEffect(() => {
-  //     Request.getVideo()
-  //       .then(data => {setMessage(data.message)})
-  //   }, []) 
-
-  //   useEffect(() => {Request.postVideo("Ello")}, []);
-
 
   return (
     <>
       <Header />
         <div className="container"> 
-          <Dropdown />
-          <Description />
+          <DropContainer />
 
         </div>
     </>

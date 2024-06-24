@@ -1,10 +1,10 @@
-import FileDrop from "./FileDrop";
+import DropBox from "./DropBox";
 
 function Dropdown() {
     return  (
 
         <div className="dropBox"> 
-            <FileDrop/>
+            <DropBox/>
         </div>
     )
 }
