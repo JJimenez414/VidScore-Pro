@@ -17,9 +17,10 @@ def getVideo():
 
 @app.route('/postVideo', methods=['POST'])
 def postVideo():
-    postID = 2
+    postID = 1;
     vFile = request.json['data']
     print(vFile)
+    
     return {'id': postID}
 
 # def index():

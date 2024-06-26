@@ -9,6 +9,7 @@ function FileDrop (props) {
         }   
     }
 
+
     return (
         <div className="dropBoxContainer">
             <label htmlFor="input-video" id="inputLabel"> 

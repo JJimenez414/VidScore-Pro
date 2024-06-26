@@ -1,15 +1,25 @@
 import FileDrop from "./FileDrop"
+import Request from "./APIRequest"
 import Video from "./Video";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function DropBox () {
 
     const [File, setFile] = useState();
 
-    function getFile(getFile) {
-        setFile(getFile);
+    const postVideo = () => {
+        Request.postVideo(File)
+        .catch(error => console.log(error));
     }
 
+    function getFile(getFile) {
+        setFile(getFile);
+
+    }
+
+    if (File) {
+        Request.postVideo(File)
+    }
 
     return (
         <>
