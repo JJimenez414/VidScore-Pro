@@ -9,26 +9,66 @@ body {
   height: 100vh;
 }
 
-.header {
-  background-color: black;
-  height: 100%;
-  color: white;
-  padding: 30px;
+.navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #E0E0DB;
+  height: 50%;
+  color: #2A2829;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-.header h1 {
-  font-family: 'Lobster', sans-serif;
-  text-align: center;
-  font-size: 4rem;
-  margin: 0px;
+li {
+  list-style: none;
+  margin-right: 2em;
+  overflow: hidden;
+
 }
+
+li:first-child {
+  margin-right: auto;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 2.5rem;
+  margin-left: 50px;
+}
+
+li:nth-child(2) {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+li:nth-child(3) {
+  margin-right: 50px;
+}
+
+.btnAppointment {
+  border: 0;
+  outline: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  background-color: #253551;
+  color: white;
+  padding: 20px 30px;
+  border-radius: 50px;
+
+}
+
+
 
 .container {
   display: flex;
-  flex-direction: row;
-  height: 83vh;
+  justify-content: center;
+  align-items: center;
+  height: 86vh;
   width: 100vw;
+  background-color: #E0E0DB;
 }
 
 .container h1 {
@@ -42,10 +82,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
   height: 100%;
   width: 65%;
-  border-right: 1px solid black;
 }
 
 .description {
@@ -60,36 +98,41 @@ body {
 
 
 .dropBoxContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 50%;
   width: 70%;
-  background-color: #D3D3D3;
-  border-radius: 25px;
+  background-color: #faf9f6;
 }
 
 .dropBoxFile {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: dashed #808080 2px;
+  flex-direction: column;
+  background-color: white;
   height: 100%;
   width: 100%;
-  border-radius: 25px;
+  border: dashed grey 2px;
 }
 
 .dropBoxFile:hover {
-  background-color: #808080;
-  border: dashed black 2px
+  background-color: #E0E0DB;
+  border: dashed black 2px;
 }
 
 .dropBoxFile p {
-  font-size: 30px;
+  font-size: 20px;
   font-family: "Roboto", sans-serif;
+  margin: 5px;
+  font-weight: 400;
 }
 
 .boxImg {
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
+  margin-bottom: 0;
+}
+
+.video {
+  height: 60%;
+  width: 70%;
 }
