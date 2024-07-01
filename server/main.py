@@ -6,6 +6,8 @@ from moviepy.editor import VideoFileClip
 import cv2
 import requests
 
+from audio import convert_mp4_to_mp3, detect_long_dips_peaks
+
 
 app = Flask(__name__)
 cors = CORS(app, origins="*")
@@ -46,9 +48,30 @@ def postVideo():
     # Save the file to the specified directory
     vFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     
-    print(vFile)
+    # print(vFile)
+
+    convert_mp4_to_mp3(f'./uploads/{filename}', './videos/audio.mp3')
+    mean, dips, peaks = detect_long_dips_peaks('./videos/audio.mp3')
+
+    if dips == 0 and peaks == 0:
+        print("The audio is stable")
+
+        # For testing: if you want to see the mean, dips, peaks, uncomment the following lines
+        print(f"Mean RMS: {mean:.2f}")
+        print(f"Number of Long Dips: {dips}")
+        print(f"Number of Long Peaks: {peaks}")
+    else:
+
+        # For testing: if you want to see the mean, dips, peaks, uncomment the following lines
+        print("The audio is not stable")
+        print(f"Mean RMS: {mean:.2f}")
+        print(f"Number of Long Dips: {dips}")
+        print(f"Number of Long Peaks: {peaks}")
+
     
     return jsonify({'id': postID, 'filename': filename})
+
+
 
 # def index():
 #     return video_resolution()
