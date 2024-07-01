@@ -5,7 +5,8 @@ venvcMac/
 venvWin/
 myenv/
 
-
+*.mp3
+*.mp4
 
 # Python cache files
 __pycache__/
