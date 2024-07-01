@@ -18,7 +18,7 @@ function DropBox () {
     }
 
     if (File) {
-        Request.postVideo(File)
+        Request.postVideo(File, "video")
     }
 
     return (

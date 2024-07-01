@@ -1,11 +1,21 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import os
+from werkzeug.utils import secure_filename
 from moviepy.editor import VideoFileClip
 import cv2
+import requests
 
 
 app = Flask(__name__)
 cors = CORS(app, origins="*")
+
+UPLOAD_FOLDER = 'uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# Ensure the upload folder exists
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
 
 @app.route('/')
 
@@ -15,13 +25,30 @@ def getVideo():
     response = {'message': 'bye!'}
     return response
 
+
 @app.route('/postVideo', methods=['POST'])
 def postVideo():
-    postID = 1;
-    vFile = request.json['data']
+    postID = 1
+
+    # Check if the POST request has the file part
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part'}), 400
+
+    vFile = request.files['file']
+
+    # If user does not select a file, the browser may also submit an empty part without a filename
+    if vFile.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
+
+    # Use secure_filename to ensure the filename is safe
+    filename = secure_filename(vFile.filename)
+    
+    # Save the file to the specified directory
+    vFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    
     print(vFile)
     
-    return {'id': postID}
+    return jsonify({'id': postID, 'filename': filename})
 
 # def index():
 #     return video_resolution()

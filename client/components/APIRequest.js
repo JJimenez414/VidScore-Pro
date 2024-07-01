@@ -1,14 +1,25 @@
 export default class Request {
 
-    static postVideo(body) {
-       return fetch('http://127.0.0.1:8080/postVideo', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({"data": body})
-      })
-      .then(response => response.json())
-      .then(data => console.log(data.id))
-      .catch(error => console.error(error));
+    static postVideo(blob, filename) {
+
+        fetch(blob)
+        .then(response => response.blob())
+        .then(blob => {
+                    
+            const form = new FormData();
+
+            console.log(blob);
+            
+            form.append("file", blob, filename);
+
+            return fetch('http://127.0.0.1:8080/postVideo', {
+                method: 'POST',
+                body: form,
+            })
+            .then(response => response.json())
+            .then(data => console.log(data.id))
+            .catch(error => console.error(error));
+        })
     }
 
     static getVideo() { 

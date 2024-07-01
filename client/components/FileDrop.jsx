@@ -5,7 +5,7 @@ function FileDrop (props) {
     function handleChange(event) {
         event.preventDefault();
         if (event.target.files.length != 0) {
-            props.getFile(URL.createObjectURL(event.target.files[0]))
+            props.getFile(URL.createObjectURL(event.target.files[0]));
         }   
     }
 
