@@ -3,9 +3,17 @@
 function Header() {
     return (
 
-        <div className="header">
-            <h1>Easy Social Media</h1>
-        </div>
+        <ul className="navBar">
+            <li> 
+                <p> highRes </p>
+            </li>
+            <li> 
+                <p> help </p>
+            </li>
+            <li> 
+                <button className="btnAppointment"> Consult </button>
+            </li>            
+        </ul>
     )
 }
 
