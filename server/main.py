@@ -1,12 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
-from werkzeug.utils import secure_filename
-from moviepy.editor import VideoFileClip
-import cv2
-import requests
 
-from audio import convert_mp4_to_mp3, detect_long_dips_peaks
+from functions import *
 
 
 app = Flask(__name__)
@@ -47,28 +43,33 @@ def postVideo():
     
     # Save the file to the specified directory
     vFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    
-    # print(vFile)
 
-    convert_mp4_to_mp3(f'./uploads/{filename}', './videos/audio.mp3')
-    mean, dips, peaks = detect_long_dips_peaks('./videos/audio.mp3')
+    convert_mp4_to_mp3(f'./uploads/{filename}', './downloads/audio.mp3')
+    mean, dips, peaks, percentage = detect_long_dips_peaks('./downloads/audio.mp3')
+    volume = avg_audio_level('./downloads/audio.mp3')
 
-    if dips == 0 and peaks == 0:
-        print("The audio is stable")
+    # Check if percentage is higher than recommended
+    scaled_percentage = percentage * (25/100)
+    if scaled_percentage < 2:
+        # The audio is stable: return the full 25%
+        print("Audio Stablizer Metric: 25/25")
+        print(f"Volume: {int(volume)}db")
 
         # For testing: if you want to see the mean, dips, peaks, uncomment the following lines
-        print(f"Mean RMS: {mean:.2f}")
-        print(f"Number of Long Dips: {dips}")
-        print(f"Number of Long Peaks: {peaks}")
+        # print(f"Mean RMS: {mean:.2f}")
+        # print(f"Number of Dips: {dips}")
+        # print(f"Number of Peaks: {peaks}")
     else:
 
-        # For testing: if you want to see the mean, dips, peaks, uncomment the following lines
-        print("The audio is not stable")
-        print(f"Mean RMS: {mean:.2f}")
-        print(f"Number of Long Dips: {dips}")
-        print(f"Number of Long Peaks: {peaks}")
+        print(f"Audio Stablizer Metric: {25 - int(scaled_percentage)}/25")
+        print(f"Volume: {int(volume)}db")
 
-    
+        # For testing: if you want to see the mean, dips, peaks, uncomment the following lines
+        print(f"Over {percentage:.2f}% of the video audio has a dip or peak")
+        # print(f"Mean RMS: {mean:.2f}")
+        # print(f"Number of Dips: {dips}")
+        # print(f"Number of Peaks: {peaks}")
+
     return jsonify({'id': postID, 'filename': filename})
 
 
@@ -76,37 +77,6 @@ def postVideo():
 # def index():
 #     return video_resolution()
 
-
-# Function will locate video file and get duration of clip, and test to see if the duration meets the ideal length. Returns string
-def video_length():
-
-    video = VideoFileClip('./videos/video1.mp4')
-    duration = video.duration
-
-    minutes, seconds = divmod(duration, 60)
-
-    seconds = seconds + (minutes * 60)
-
-    ideal_length = 45
-    if seconds > ideal_length:
-        return f"The video is too long. {int(seconds)} seconds is {int(seconds - ideal_length)} seconds much longer than the ideal range"
-    else:
-        return f"The video is a good length. At {int(seconds)} seconds, the video is {int(ideal_length - seconds)} seconds below ideal range."
-
-def video_resolution():
-
-    path = './videos/video1.mp4'
-    vid = cv2.VideoCapture(path)
-
-    height = vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
-    width = vid.get(cv2.CAP_PROP_FRAME_WIDTH)
-
-    if height < 1920 and width < 1080:
-        output = f"The video quality is below recommended: {int(height)} x {int(width)} pixels."
-    else:
-        output = f"The video quality is good: {int(height)} x {int(width)} pixels."
-
-    return output
 
 
 
