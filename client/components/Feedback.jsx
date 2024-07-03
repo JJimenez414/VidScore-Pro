@@ -1,7 +1,22 @@
 
-function Feedback () {
+function Feedback (props) {
     return (
-        <h1>This is feedback</h1>
+        <div className="card">
+            <ul className="headTitle">
+                <li>
+                    <h1>{props.title}</h1> 
+                </li>
+
+                <li>
+                    <div className="boxArrow">
+                        <div className="arrow"></div>
+                        <div className="arrow"></div>
+                    </div>
+                </li>
+            </ul>
+            <p>{props.results}</p>
+            <p className="desNote">{props.description}</p>
+        </div>
     )
 }
 

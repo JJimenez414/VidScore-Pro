@@ -13,9 +13,10 @@ function App() {
   return (
     <>
       <Header />
-        <div className="container"> 
-          <DropContainer />
-
+      {/* className="container" */}
+        <div className="grid"> 
+          {/* <DropContainer /> */}
+          <Description />
         </div>
     </>
   )

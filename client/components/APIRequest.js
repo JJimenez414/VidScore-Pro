@@ -7,8 +7,6 @@ export default class Request {
         .then(blob => {
                     
             const form = new FormData();
-
-            console.log(blob);
             
             form.append("file", blob, filename);
 
@@ -17,7 +15,7 @@ export default class Request {
                 body: form,
             })
             .then(response => response.json())
-            .then(data => console.log(data.id))
+            .then(data => console.log(data.nameRequest))
             .catch(error => console.error(error));
         })
     }
