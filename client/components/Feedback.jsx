@@ -8,7 +8,7 @@ function Feedback (props) {
                 </li>
 
                 <li>
-                    <div className="boxArrow">
+                    <div className="boxArrow" onClick={() => console.log("hello")}>
                         <div className="arrow"></div>
                         <div className="arrow"></div>
                     </div>
