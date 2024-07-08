@@ -20,10 +20,11 @@ export default class Request {
         })
     }
 
-    static getVideo() { 
-        return fetch('http://127.0.0.1:8080/getVideo')
+    static sendData() { 
+        return fetch('http://127.0.0.1:8080/sendData')
             .then(response => response.json())
             .then(data => {
+                console.log(data.scaled_percentage);
                 return data;
              }
             );
