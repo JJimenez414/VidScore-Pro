@@ -28,7 +28,6 @@ def getVideo():
 
 @app.route('/postVideo', methods=['POST'])
 def postVideo():
-    postID = 1
 
     # Check if the POST request has the file part
     if 'file' not in request.files:
@@ -48,7 +47,7 @@ def postVideo():
     
     print(vFile)
     
-    return jsonify({'id': postID, 'filename': filename})
+    return jsonify({'nameRequest': "postVideo", 'filename': filename})
 
 # def index():
 #     return video_resolution()
