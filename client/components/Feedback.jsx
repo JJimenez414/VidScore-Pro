@@ -1,21 +1,32 @@
-
+import { useState } from "react";
 function Feedback (props) {
+
+    const [display, setDisplay] = useState(true);
+
+    function cardDisplay(display) {
+        setDisplay(display);
+      }
+    
+
     return (
-        <div className="card">
+        <div className="card descriptionFont" >
             <ul className="headTitle">
                 <li>
-                    <h1>{props.title}</h1> 
+                    <h1 className="descriptionFont">{props.title}</h1> 
                 </li>
 
-                <li>
-                    <div className="boxArrow" onClick={() => console.log("hello")}>
-                        <div className="arrow"></div>
-                        <div className="arrow"></div>
+                <li>    
+                    <div className="boxArrow" onClick={() => display === false ? cardDisplay(true) : cardDisplay(false)}>
+                        <div className={display === true ? "arrowUp" : "arrowDow"}></div>
+                        <div className={display === true ? "arrowUp" : "arrowDow"}></div>
                     </div>
                 </li>
             </ul>
-            <p>{props.results}</p>
-            <p className="desNote">{props.description}</p>
+                
+            <div className={display === true ? "notVisible" : ""}>
+                <p className="descriptionFont">{props.results}</p>
+                <p className="desNote descriptionFont">{props.description}</p>
+            </div>
         </div>
     )
 }

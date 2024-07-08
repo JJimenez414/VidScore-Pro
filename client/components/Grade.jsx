@@ -2,7 +2,9 @@
 
 function Grade() {
     return (
-        <h1>This is Grade </h1>
+        <div className="gradeBox">
+            <p className="grade">Score: 100%</p>
+        </div>
     )
 }
 

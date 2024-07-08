@@ -15,7 +15,7 @@ function App() {
       <Header />
       {/* className="container" */}
         <div className="grid"> 
-          {/* <DropContainer /> */}
+          <DropContainer />
           <Description />
         </div>
     </>

@@ -3,7 +3,7 @@
 function Header() {
     return (
 
-        <ul className="navBar">1
+        <ul className="navBar">
             <li> 
                 <p> highRes </p>
             </li>
