@@ -69,7 +69,7 @@ def postVideo():
         # print(f"Number of Dips: {dips}")
         # print(f"Number of Peaks: {peaks}")
 
-    return jsonify({'nameRequest': "postVideo", 'filename': filename})
+    return jsonify({'nameRequest': "postVideo", 'filename': filename}) # Verify if this is correct
 
 
 
