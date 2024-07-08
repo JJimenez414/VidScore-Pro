@@ -127,6 +127,8 @@ def video_resolution():
 
     return output
 
+
+# This function needs fixing: (Approach isn't giving accurate info)
 def avg_audio_level(audio_path):
     # Load the audio file
     y, sr = librosa.load(audio_path, sr=None)
