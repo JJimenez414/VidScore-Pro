@@ -7,6 +7,7 @@ from moviepy.editor import VideoFileClip
 import cv2
 import requests
 
+
 # Used to convert uploaded video files into audio files to analyze
 def convert_mp4_to_mp3(video_path, audio_path):
     
@@ -111,7 +112,6 @@ def video_length():
     else:
         return f"The video is a good length. At {int(seconds)} seconds, the video is {int(ideal_length - seconds)} seconds below ideal range."
 
-
 def video_resolution():
 
     path = './videos/video1.mp4'
@@ -126,7 +126,6 @@ def video_resolution():
         output = f"The video quality is good: {int(height)} x {int(width)} pixels."
 
     return output
-
 
 # This function needs fixing: (Approach isn't giving accurate info)
 def avg_audio_level(audio_path):
