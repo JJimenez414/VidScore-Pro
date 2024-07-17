@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 
 function DropBox () {
 
-    const [File, setFile] = useState();
+    const [File, setFile] = useState(); 
 
-    const postVideo = () => {
-        Request.postVideo(File)
-        .catch(error => console.log(error));
-    }
+    // const postVideo = () => {
+    //     Request.postVideo(File)
+    //     .catch(error => console.log(error));
+    // }
 
     function getFile(getFile) {
         setFile(getFile);
@@ -18,6 +18,8 @@ function DropBox () {
     }
 
     if (File) {
+        
+        // This is calling the postVideo function from the APIRequest.js file
         Request.postVideo(File, "video.mp4")
     }
 

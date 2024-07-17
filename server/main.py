@@ -15,18 +15,15 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
+# GLOBAL VARIABLES
+mean, dips, peaks, percentage, scaled_percentage = 0, 0, 0, 0, 0
+
 @app.route('/')
 
-# Jose Fetch/Catch
-@app.route('/getVideo')
-def getVideo():
-    response = {'message': 'bye!'}
-    return response
-
-
+# This will get video from frontend and do analyses on it
 @app.route('/postVideo', methods=['POST'])
 def postVideo():
-
+    global mean, dips, peaks, percentage, scaled_percentage, length_percent, resolution_percent
     # Check if the POST request has the file part
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
@@ -41,42 +38,56 @@ def postVideo():
     filename = secure_filename(vFile.filename)
     
     # Save the file to the specified directory
-    vFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+    vFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename)) # video.mp4
+
+    
+    if video_length(f"./uploads/{filename}"):
+        length_percent = 25
+    else:
+        length_percent = 0
+    
+
+    if video_resolution(f"./uploads/{filename}"):
+        resolution_percent = 25
+    else:
+        resolution_percent = 0
+        
 
     convert_mp4_to_mp3(f'./uploads/{filename}', './downloads/audio.mp3')
     mean, dips, peaks, percentage = detect_long_dips_peaks('./downloads/audio.mp3')
-    volume = avg_audio_level('./downloads/audio.mp3')
+
+    # this function needs to be updated | volume = avg_audio_level('./downloads/audio.mp3') 
 
     # Check if percentage is higher than recommended
     scaled_percentage = percentage * (25/100)
-    if scaled_percentage < 2:
-        # The audio is stable: return the full 25%
-        print("Audio Stablizer Metric: 25/25")
-        print(f"Volume: {int(volume)}db")
-
-        # For testing: if you want to see the mean, dips, peaks, uncomment the following lines
-        # print(f"Mean RMS: {mean:.2f}")
-        # print(f"Number of Dips: {dips}")
-        # print(f"Number of Peaks: {peaks}")
+    # print(scaled_percentage)
+    if scaled_percentage > 2: 
+        scaled_percentage = 25 - int(scaled_percentage)
     else:
-
-        print(f"Audio Stablizer Metric: {25 - int(scaled_percentage)}/25")
-        print(f"Volume: {int(volume)}db")
-
-        # For testing: if you want to see the mean, dips, peaks, uncomment the following lines
-        print(f"Over {percentage:.2f}% of the video audio has a dip or peak")
-        # print(f"Mean RMS: {mean:.2f}")
-        # print(f"Number of Dips: {dips}")
-        # print(f"Number of Peaks: {peaks}")
-
+        scaled_percentage = 25
+    
     return jsonify({'nameRequest': "postVideo", 'filename': filename}) # Verify if this is correct
+
+
+
+# This will send data back to frontend
+@app.route('/sendData', methods=['GET'])
+def sendData():
+    response = {'mean': mean,
+                'dips': dips,
+                'peaks': peaks,
+                'percentage': percentage,
+                'scaled_percentage': scaled_percentage,
+                'length_percent': length_percent,
+                'resolution_percent': resolution_percent}
+    
+    return jsonify(response)
 
 
 
 # def index():
 #     return video_resolution()
-
-
 
 
 if __name__ == '__main__':
