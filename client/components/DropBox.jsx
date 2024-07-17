@@ -7,6 +7,10 @@ function DropBox (props) {
 
     const [File, setFile] = useState(); 
 
+    const postVideo = () => {
+        Request.postVideo(File)
+        .catch(error => console.log(error));
+    }
 
     function getFile(getFile) {
         setFile(getFile);
@@ -22,16 +26,8 @@ function DropBox (props) {
           }
     }
 
-    // useEffect(() => {
-    //     if (File) {
-    //       // This is calling the postVideo function from the APIRequest.js file
-    //       Request.postVideo(File, "video.mp4");
-    //       props.FileExists(true);
-    //     }
-    //   }, [File, props]);
-
     if (File) {
-        postVideoFunc();
+        Request.postVideo(File, "video.mp4")
     }
 
     return (

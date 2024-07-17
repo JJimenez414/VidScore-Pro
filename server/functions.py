@@ -92,9 +92,9 @@ def detect_long_dips_peaks(audio_path, frame_size=2048, hop_length=512, dip_db_t
     return mean_rms_db, len(long_dips_regions), len(long_peaks_regions), dip_peak_percentage
 
 # Function will locate video file and get duration of clip, and test to see if the duration meets the ideal length. Returns string
-def video_length():
+def video_length(video) -> bool:
 
-    video = VideoFileClip('./videos/video1.mp4')
+    video = VideoFileClip(video)
     duration = video.duration
 
     minutes, seconds = divmod(duration, 60)
@@ -108,24 +108,28 @@ def video_length():
     # Return a percentage value that changes based off how far it is from ideal length (Total percentage points are 25%)
     
     if seconds > ideal_length:
-        return f"The video is too long. {int(seconds)} seconds is {int(seconds - ideal_length)} seconds much longer than the ideal range"
+        return False
+        # f"The video is too long. {int(seconds)} seconds is {int(seconds - ideal_length)} seconds much longer than the ideal range"
     else:
-        return f"The video is a good length. At {int(seconds)} seconds, the video is {int(ideal_length - seconds)} seconds below ideal range."
+        return True
+        # f"The video is a good length. At {int(seconds)} seconds, the video is {int(ideal_length - seconds)} seconds below ideal range."
 
-def video_resolution():
 
-    path = './videos/video1.mp4'
+def video_resolution(video) -> bool:
+
+    path = video
     vid = cv2.VideoCapture(path)
 
     height = vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
     width = vid.get(cv2.CAP_PROP_FRAME_WIDTH)
 
-    if height < 1920 and width < 1080:
-        output = f"The video quality is below recommended: {int(height)} x {int(width)} pixels."
+    if height != 1920 and width != 1080:
+        return False
+        # output = f"The video quality is below recommended: {int(height)} x {int(width)} pixels."
     else:
-        output = f"The video quality is good: {int(height)} x {int(width)} pixels."
+        return True
+        # output = f"The video quality is good: {int(height)} x {int(width)} pixels."
 
-    return output
 
 # This function needs fixing: (Approach isn't giving accurate info)
 def avg_audio_level(audio_path):

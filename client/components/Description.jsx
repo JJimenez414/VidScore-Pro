@@ -25,6 +25,10 @@ function Description(props) {
     }
   }, [props.fileExists]);
 
+  const [scaled_percentage, setPercentage] = useState(0);
+  Request.sendData().then(data => {
+    setPercentage(data.scaled_percentage);
+  });
 
   return ( 
 
