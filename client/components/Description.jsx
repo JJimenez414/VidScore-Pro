@@ -6,31 +6,39 @@ import Request from "./APIRequest";
 
 function Description(props) {
 
-  const [scaled_percentage, setPercentage] = useState(-1);
+  const [total, setTotal] = useState(0)
+  const [scaled_percentage, setPercentage] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-  const handleSendData = async () => {
-      setLoading(true);
-      try {
-        const result = await Request.sendData();
-        setPercentage(result.scaled_percentage);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const handleSendData = async () => {
+        setLoading(true);
+        try {
+          const result = await Request.sendData();
+          setPercentage(result.scaled_percentage);
+        } finally {
+          setLoading(false);
+        }
+      };
 
-    if (props.fileExists) {
-      handleSendData();
-    }
-  }, [props.fileExists]);
+      if (props.fileExists == true) {
+        handleSendData();
+      }
+
+    }, [props.fileExists]);
+
+   useEffect(() => {
+
+      setTotal(scaled_percentage + total);
+
+   }, [scaled_percentage])
 
 
   return ( 
 
     <div className="description"> 
     
-    <Grade grade={ loading ? "Loading..." : scaled_percentage} />
+      <Grade grade={ loading ? "Loading..." : total} />
 
       <Feedback 
         title="Length" 

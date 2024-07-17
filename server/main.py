@@ -23,6 +23,7 @@ mean, dips, peaks, percentage, scaled_percentage = 0, 0, 0, 0, 0
 @app.route('/')
 
 # This will get video from frontend and do analyses on it
+# This will get video from frontend and do analyses on it
 @app.route('/postVideo', methods=['POST'])
 def postVideo():
     global mean, dips, peaks, percentage, scaled_percentage
@@ -71,14 +72,6 @@ def sendData():
                 'scaled_percentage': scaled_percentage}
     
     return jsonify(response)
-
-
-
-# def index():
-#     return video_resolution()
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True, port="8080")
