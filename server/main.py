@@ -18,12 +18,15 @@ if not os.path.exists(UPLOAD_FOLDER):
 # GLOBAL VARIABLES
 mean, dips, peaks, percentage, scaled_percentage = 0, 0, 0, 0, 0
 
+
+
 @app.route('/')
 
 # This will get video from frontend and do analyses on it
+# This will get video from frontend and do analyses on it
 @app.route('/postVideo', methods=['POST'])
 def postVideo():
-    global mean, dips, peaks, percentage, scaled_percentage, length_percent, resolution_percent
+    global mean, dips, peaks, percentage, scaled_percentage
     # Check if the POST request has the file part
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
@@ -59,7 +62,9 @@ def postVideo():
 
     # this function needs to be updated | volume = avg_audio_level('./downloads/audio.mp3') 
 
-    # Check if percentage is higher than recommended
+    # this function needs to be updated | volume = avg_audio_level('./downloads/audio.mp3') 
+
+    #Check if percentage is higher than recommended
     scaled_percentage = percentage * (25/100)
     # print(scaled_percentage)
     if scaled_percentage > 2: 
@@ -92,4 +97,3 @@ def sendData():
 
 if __name__ == '__main__':
     app.run(debug=True, port="8080")
-    

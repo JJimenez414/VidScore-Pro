@@ -1,10 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Feedback from "../components/Feedback"
 import Grade from "../components/Grade"
 import Request from "./APIRequest";
 
 
-function Description() {
+function Description(props) {
+
+  const [scaled_percentage, setPercentage] = useState(-1);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+  const handleSendData = async () => {
+      setLoading(true);
+      try {
+        const result = await Request.sendData();
+        setPercentage(result.scaled_percentage);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (props.fileExists) {
+      handleSendData();
+    }
+  }, [props.fileExists]);
 
   const [scaled_percentage, setPercentage] = useState(0);
   Request.sendData().then(data => {
@@ -14,7 +33,8 @@ function Description() {
   return ( 
 
     <div className="description"> 
-      <Grade grade={scaled_percentage}/>
+    
+    <Grade grade={ loading ? "Loading..." : scaled_percentage} />
 
       <Feedback 
         title="Length" 
@@ -22,6 +42,7 @@ function Description() {
         results="Result: 15 seconds"  
         description="-:We analyse the length of the video and compare to the average length to short media content."
       />
+      {/* <button onClick={handleSendData}>Hello world</button> */}
 
       <Feedback 
         title="Resolution" 
