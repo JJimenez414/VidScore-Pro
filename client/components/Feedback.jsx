@@ -24,6 +24,7 @@ function Feedback (props) {
             </ul>
                 
             <div className={display === true ? "notVisible" : ""}>
+                <p className="descriptionFont">{props.grade}</p>
                 <p className="descriptionFont">{props.results}</p>
                 <p className="desNote descriptionFont">{props.description}</p>
             </div>

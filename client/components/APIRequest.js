@@ -28,8 +28,6 @@ export default class Request {
             .then(response => response.json())
             .then(data => {
                 console.log("send data");
-                console.log(data.scaled_percentage);
-                console.log(data.scaled_percentage);
                 return data;
              }
             );

@@ -16,7 +16,7 @@ if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
 # GLOBAL VARIABLES
-mean, dips, peaks, percentage, scaled_percentage = 0, 0, 0, 0, 0
+mean, dips, peaks, percentage, scaled_percentage, length_percent, resolution_percent = 0, 0, 0, 0, 0, 0, 0
 
 
 
