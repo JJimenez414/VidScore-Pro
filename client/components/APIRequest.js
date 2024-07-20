@@ -2,7 +2,7 @@ export default class Request {
 
     static postVideo(blob, filename) {
 
-        fetch(blob)
+        return fetch(blob)
         .then(response => response.blob())
         .then(blob => {
                     
@@ -17,6 +17,7 @@ export default class Request {
             .then(response => response.json())
             .then((data) => {
                 console.log(data.nameRequest);
+                return data;
             })
             .catch(error => console.error(error));
         })
@@ -27,8 +28,6 @@ export default class Request {
             .then(response => response.json())
             .then(data => {
                 console.log("send data");
-                console.log(data.scaled_percentage);
-                console.log(data.scaled_percentage);
                 return data;
              }
             );

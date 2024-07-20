@@ -6,39 +6,48 @@ import Request from "./APIRequest";
 
 function Description(props) {
 
-  const [scaled_percentage, setPercentage] = useState(-1);
+  const [total, setTotal] = useState(0);
+  const [scaled_percentage, setPercentage] = useState(0);
+  const [length_percentage, setLengthPercentage] = useState(0);
+  const [resolution_percentage, setResolutionPercentage] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-  const handleSendData = async () => {
-      setLoading(true);
-      try {
-        const result = await Request.sendData();
-        setPercentage(result.scaled_percentage);
-      } finally {
-        setLoading(false);
+    const handleSendData = async () => {
+        setLoading(true);
+        try {
+          const result = await Request.sendData();
+          setPercentage(result.scaled_percentage);
+          setLengthPercentage(result.length_percent);
+          setResolutionPercentage(result.resolution_percent);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      if (props.fileExists == true) {
+        handleSendData();
       }
-    };
 
-    if (props.fileExists) {
-      handleSendData();
-    }
-  }, [props.fileExists]);
+    }, [props.fileExists]);
 
-  const [scaled_percentage, setPercentage] = useState(0);
-  Request.sendData().then(data => {
-    setPercentage(data.scaled_percentage);
-  });
+   useEffect(() => {
+
+      setTotal(scaled_percentage + total);
+      console.log(length_percentage);
+      console.log(resolution_percentage);
+
+   }, [scaled_percentage])
 
   return ( 
 
     <div className="description"> 
     
-    <Grade grade={ loading ? "Loading..." : scaled_percentage} />
+      <Grade grade={ loading ? "Loading..." : total} />
 
       <Feedback 
         title="Length" 
-        grade="00" 
+        grade={length_percentage} 
         results="Result: 15 seconds"  
         description="-:We analyse the length of the video and compare to the average length to short media content."
       />
@@ -46,7 +55,7 @@ function Description(props) {
 
       <Feedback 
         title="Resolution" 
-        grade="00" 
+        grade={resolution_percentage} 
         results="Result: 15 seconds"  
         description="-:We analyse the length of the video and compare to the average length to short media content."
       />

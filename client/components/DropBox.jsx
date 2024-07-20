@@ -7,28 +7,26 @@ function DropBox (props) {
 
     const [File, setFile] = useState(); 
 
-    const postVideo = () => {
-        Request.postVideo(File)
-        .catch(error => console.log(error));
-    }
-
     function getFile(getFile) {
         setFile(getFile);
 
     }
 
+    useEffect(() => {
+        const postVideoFunc = async () => {
+            try {
+                const result = await Request.postVideo(File, "video.mp4");
+                props.doesFileExists(true);
+            } finally {
+                console.log("finally");
+            }
+        }
 
-    const postVideoFunc = async () => {
-        try {
-            const result = await Request.postVideo(File, "video.mp4");;
-          } finally {
-            props.doesFileExists(true);
-          }
-    }
-
-    if (File) {
-        Request.postVideo(File, "video.mp4")
-    }
+        if (File) {
+            postVideoFunc();
+        }
+        
+    }, [File])
 
     return (
         <>
