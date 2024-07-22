@@ -15,18 +15,13 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
-# GLOBAL VARIABLES
-mean, dips, peaks, percentage, scaled_percentage, length_percent, resolution_percent = 0, 0, 0, 0, 0, 0, 0
-
-
-
 @app.route('/')
 
 # This will get video from frontend and do analyses on it
 # This will get video from frontend and do analyses on it
 @app.route('/postVideo', methods=['POST'])
 def postVideo():
-    global mean, dips, peaks, percentage, scaled_percentage
+    global mean, dips, peaks, percentage, audio_percentage, length_percent, resolution_percent
     # Check if the POST request has the file part
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
@@ -65,12 +60,12 @@ def postVideo():
     # this function needs to be updated | volume = avg_audio_level('./downloads/audio.mp3') 
 
     #Check if percentage is higher than recommended
-    scaled_percentage = percentage * (25/100)
-    # print(scaled_percentage)
-    if scaled_percentage > 2: 
-        scaled_percentage = 25 - int(scaled_percentage)
+    audio_percentage = percentage * (25/100)
+    # print(audio_percentage)
+    if audio_percentage > 2: 
+        audio_percentage = 25 - int(audio_percentage)
     else:
-        scaled_percentage = 25
+        audio_percentage = 25
     
     return jsonify({'nameRequest': "postVideo", 'filename': filename}) # Verify if this is correct
 
@@ -79,22 +74,14 @@ def postVideo():
 # This will send data back to frontend
 @app.route('/sendData', methods=['GET'])
 def sendData():
-    response = {'mean': mean,
+    response = {'mean': int(mean),
                 'dips': dips,
                 'peaks': peaks,
-                'percentage': percentage,
-                'scaled_percentage': scaled_percentage,
-                'length_percent': length_percent,
-                'resolution_percent': resolution_percent}
+                'audio_percentage': audio_percentage,
+                'length_percentage': length_percent,
+                'resolution_percentage': resolution_percent}
     
     return jsonify(response)
-
-
-
-# def index():
-#     return video_resolution()
-
-
 
 
 if __name__ == '__main__':
