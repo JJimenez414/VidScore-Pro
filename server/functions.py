@@ -6,6 +6,8 @@ from werkzeug.utils import secure_filename
 from moviepy.editor import VideoFileClip
 import cv2
 import requests
+import moviepy.editor as mp
+from scipy.signal import butter, lfilter, iirnotch
 
 
 # Used to convert uploaded video files into audio files to analyze
@@ -92,7 +94,7 @@ def detect_long_dips_peaks(audio_path, frame_size=2048, hop_length=512, dip_db_t
     return mean_rms_db, len(long_dips_regions), len(long_peaks_regions), dip_peak_percentage
 
 # Function will locate video file and get duration of clip, and test to see if the duration meets the ideal length. Returns string
-def video_length(video) -> bool:
+def video_length(video):
 
     video = VideoFileClip(video)
     duration = video.duration
@@ -108,14 +110,14 @@ def video_length(video) -> bool:
     # Return a percentage value that changes based off how far it is from ideal length (Total percentage points are 25%)
     
     if seconds > ideal_length:
-        return False
+        return seconds, 0
         # f"The video is too long. {int(seconds)} seconds is {int(seconds - ideal_length)} seconds much longer than the ideal range"
     else:
-        return True
+        return seconds, 1
         # f"The video is a good length. At {int(seconds)} seconds, the video is {int(ideal_length - seconds)} seconds below ideal range."
 
 
-def video_resolution(video) -> bool:
+def video_resolution(video):
 
     path = video
     vid = cv2.VideoCapture(path)
@@ -124,14 +126,100 @@ def video_resolution(video) -> bool:
     width = vid.get(cv2.CAP_PROP_FRAME_WIDTH)
 
     if height != 1920 and width != 1080:
-        return False
+        return height, width, 0
         # output = f"The video quality is below recommended: {int(height)} x {int(width)} pixels."
     else:
-        return True
+        return height, width, 1
         # output = f"The video quality is good: {int(height)} x {int(width)} pixels."
 
 
-# This function needs fixing: (Approach isn't giving accurate info)
+'''
+
+def butter_bandpass(lowcut, highcut, fs, order=5):
+    nyquist = 0.5 * fs
+    low = lowcut / nyquist
+    high = highcut / nyquist
+    b, a = butter(order, [low, high], btype='band')
+    return b, a
+
+def bandpass_filter(data, lowcut, highcut, fs, order=5):
+    b, a = butter_bandpass(lowcut, highcut, fs, order=order)
+    y = lfilter(b, a, data)
+    return y
+
+def notch_filter(data, freq, fs, quality=30):
+    nyquist = 0.5 * fs
+    freq = freq / nyquist
+    b, a = iirnotch(freq, quality)
+    y = lfilter(b, a, data)
+    return y
+
+def calculate_snr(signal, noise):
+    signal_power = np.mean(signal ** 2)
+    noise_power = np.mean(noise ** 2)
+    snr = 10 * np.log10(signal_power / noise_power)
+    return snr
+
+def analyze_noise(video_path, noise_threshold=20, lowcut=300, highcut=3400, fs=44100):
+    # Load video file
+    video = mp.VideoFileClip(video_path)
+    
+    # Extract audio
+    audio = video.audio.to_soundarray(fps=fs)
+    
+    # Convert stereo to mono by averaging channels if necessary
+    if audio.ndim == 2:
+        audio = np.mean(audio, axis=1)
+    
+    # Apply bandpass filter to isolate speech frequencies
+    filtered_audio = bandpass_filter(audio, lowcut, highcut, fs)
+    
+    # Estimate noise by subtracting filtered signal from the original signal
+    noise = audio - filtered_audio
+    
+    # Calculate SNR
+    snr = calculate_snr(filtered_audio, noise)
+    
+    # Detect specific types of noise
+    # Hiss (high-frequency noise)
+    high_freq_noise = bandpass_filter(noise, 3000, fs/2, fs)
+    hiss_power = np.mean(high_freq_noise ** 2)
+    
+    # Hum (low-frequency noise)
+    hum_noise = notch_filter(noise, 50, fs)  # Assuming 50Hz hum
+    hum_power = np.mean(hum_noise ** 2)
+    
+    # Clicks and pops (sudden sharp noises)
+    transient_noise = bandpass_filter(noise, 2000, 8000, fs)
+    transient_power = np.mean(transient_noise ** 2)
+    
+    noise_info = {
+        "snr": snr,
+        "hiss_power": hiss_power,
+        "hum_power": hum_power,
+        "transient_power": transient_power
+    }
+    
+    # Determine if audio is noisy based on the threshold
+    is_noisy = snr < noise_threshold or hiss_power > 1e-5 or hum_power > 1e-5 or transient_power > 1e-5
+    
+    return is_noisy, noise_info
+
+
+# Example usage
+video_path = "path_to_your_video_file.mp4"
+is_noisy, noise_info = analyze_noise(video_path)
+if is_noisy:
+    print("The audio has an outstanding amount of noise.")
+    print("Noise details:", noise_info)
+else:
+    print("The audio is not noisy.")
+
+'''
+
+
+
+# This function needs fixing: (Approach isn't giving accurate info) - OUT OF SERVICE
 def avg_audio_level(audio_path):
     # Load the audio file
     y, sr = librosa.load(audio_path, sr=None)
