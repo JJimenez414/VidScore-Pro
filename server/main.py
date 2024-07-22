@@ -19,6 +19,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 @app.route('/')
 
 # This will get video from frontend and do analyses on it
+# This will get video from frontend and do analyses on it
 @app.route('/postVideo', methods=['POST'])
 def postVideo():
     global mean, dips, peaks, percentage, scaled_percentage, l_seconds, length_percent, height, width, resolution_percent
@@ -95,6 +96,7 @@ def sendData():
 #     return video_resolution()
 
 
+
+
 if __name__ == '__main__':
     app.run(debug=True, port="8080")
-    

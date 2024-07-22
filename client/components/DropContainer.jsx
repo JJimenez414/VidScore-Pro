@@ -1,10 +1,10 @@
 import DropBox from "./DropBox";
 
-function Dropdown() {
+function Dropdown(props) {
     return  (
 
         <div className="dropBox"> 
-            <DropBox/>
+            <DropBox doesFileExists={props.doesFileExists}/>
         </div>
     )
 }

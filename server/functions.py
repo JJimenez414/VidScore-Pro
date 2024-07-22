@@ -234,4 +234,3 @@ def avg_audio_level(audio_path):
     average_db = np.mean(rms_db)
     
     return average_db
-

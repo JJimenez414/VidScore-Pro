@@ -3,25 +3,30 @@ import Request from "./APIRequest"
 import Video from "./Video";
 import { useEffect, useState } from "react";
 
-function DropBox () {
+function DropBox (props) {
 
     const [File, setFile] = useState(); 
-
-    // const postVideo = () => {
-    //     Request.postVideo(File)
-    //     .catch(error => console.log(error));
-    // }
 
     function getFile(getFile) {
         setFile(getFile);
 
     }
 
-    if (File) {
+    useEffect(() => {
+        const postVideoFunc = async () => {
+            try {
+                const result = await Request.postVideo(File, "video.mp4");
+                props.doesFileExists(true);
+            } finally {
+                console.log("finally");
+            }
+        }
+
+        if (File) {
+            postVideoFunc();
+        }
         
-        // This is calling the postVideo function from the APIRequest.js file
-        Request.postVideo(File, "video.mp4")
-    }
+    }, [File])
 
     return (
         <>

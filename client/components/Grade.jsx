@@ -1,5 +1,3 @@
-
-
 function Grade(props) {
     return (
         <div className="gradeBox">
