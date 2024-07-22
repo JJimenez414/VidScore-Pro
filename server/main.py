@@ -15,15 +15,13 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
-# GLOBAL VARIABLES
-mean, dips, peaks, percentage, scaled_percentage = 0, 0, 0, 0, 0
 
 @app.route('/')
 
 # This will get video from frontend and do analyses on it
 @app.route('/postVideo', methods=['POST'])
 def postVideo():
-    global mean, dips, peaks, percentage, scaled_percentage, length_percent, resolution_percent
+    global mean, dips, peaks, percentage, scaled_percentage, l_seconds, length_percent, height, width, resolution_percent
     # Check if the POST request has the file part
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
@@ -42,13 +40,16 @@ def postVideo():
     vFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename)) # video.mp4
 
     
-    if video_length(f"./uploads/{filename}"):
+
+    l_seconds, l_boolean = video_length(f"./uploads/{filename}")
+
+    if l_boolean == 1:
         length_percent = 25
     else:
         length_percent = 0
     
-
-    if video_resolution(f"./uploads/{filename}"):
+    height, width, r_boolean = video_resolution(f"./uploads/{filename}")
+    if r_boolean == 1:
         resolution_percent = 25
     else:
         resolution_percent = 0
@@ -60,7 +61,7 @@ def postVideo():
     # this function needs to be updated | volume = avg_audio_level('./downloads/audio.mp3') 
 
     # Check if percentage is higher than recommended
-    scaled_percentage = percentage * (25/100)
+    scaled_percentage = percentage * (25/100) # THIS NEEDS TO BE UPDATED
     # print(scaled_percentage)
     if scaled_percentage > 2: 
         scaled_percentage = 25 - int(scaled_percentage)
@@ -74,13 +75,17 @@ def postVideo():
 # This will send data back to frontend
 @app.route('/sendData', methods=['GET'])
 def sendData():
-    response = {'mean': mean,
+    response = {'mean': mean, 
                 'dips': dips,
                 'peaks': peaks,
                 'percentage': percentage,
                 'scaled_percentage': scaled_percentage,
+                'l_seconds': l_seconds,
                 'length_percent': length_percent,
-                'resolution_percent': resolution_percent}
+                'height': height,
+                'width': width,
+                'resolution_percent': resolution_percent
+                }
     
     return jsonify(response)
 
