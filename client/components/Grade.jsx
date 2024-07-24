@@ -1,7 +1,15 @@
+import Loading from "../components/Loading";
+
 function Grade(props) {
     return (
         <div className="gradeBox">
-            <p className="grade">Score: {props.grade}</p>
+            <div className="grade">
+                <p>Score: </p>
+            </div>
+            
+            <div className="loadingGradeContainer">
+                { props.loading ? <div className="dot-elastic"></div> : props.grade}
+            </div>
         </div>
     )
 }

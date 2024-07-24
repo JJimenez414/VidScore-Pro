@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Feedback from "../components/Feedback"
 import Grade from "../components/Grade"
 import Request from "./APIRequest";
-import Loading from "../components/Loading";
 
 
 function Description(props) {
@@ -14,13 +13,14 @@ function Description(props) {
   const [mean, setMean] = useState(0);
   const [dips, setDips] = useState(0);
   const [peaks, setPeaks] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+
     const handleSendData = async () => {
-        setLoading(true);
         try {
           const result = await Request.sendData();
+          await new Promise((resolve) => setTimeout(resolve, 5000))
           setPercentage(result.audio_percentage);
           setLengthPercentage(result.length_percentage);
           setResolutionPercentage(result.resolution_percentage);
@@ -33,6 +33,7 @@ function Description(props) {
       };
 
       if (props.fileExists == true) {
+        setLoading(true)
         handleSendData();
       }
 
@@ -47,8 +48,17 @@ function Description(props) {
   return ( 
 
     <div className="description"> 
-    
-      <Grade grade={ loading ? <Loading /> : total} />
+
+      {loading ?
+        <Grade 
+        grade={total + "%"}  
+        loading={false}
+        />
+      : <Grade 
+        grade={"N/A"}  
+        loading={loading}
+        />
+      }
 
       <Feedback 
         title="Length" 
