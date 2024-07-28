@@ -18,22 +18,24 @@ function Description(props) {
   useEffect(() => {
 
     const handleSendData = async () => {
+        setLoading(true)
         try {
           const result = await Request.sendData();
-          await new Promise((resolve) => setTimeout(resolve, 5000))
+          await new Promise((resolve) => setTimeout(resolve, 2000))
           setPercentage(result.audio_percentage);
           setLengthPercentage(result.length_percentage);
           setResolutionPercentage(result.resolution_percentage);
           setDips(result.dips);
           setMean(result.mean);
           setPeaks(result.peaks)
-        } finally {
+          setTotal(result.audio_percentage + result.length_percentage + result.resolution_percentage);
           setLoading(false);
+        } catch(e) {
+          console.log(e);
         }
       };
 
       if (props.fileExists == true) {
-        setLoading(true)
         handleSendData();
       }
 
@@ -49,16 +51,11 @@ function Description(props) {
 
     <div className="description"> 
 
-      {loading ?
-        <Grade 
+
+      <Grade 
         grade={total + "%"}  
-        loading={false}
-        />
-      : <Grade 
-        grade={"N/A"}  
         loading={loading}
-        />
-      }
+      />
 
       <Feedback 
         title="Length" 

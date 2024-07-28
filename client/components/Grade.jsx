@@ -4,7 +4,7 @@ function Grade(props) {
     return (
         <div className="gradeBox">
             <div className="grade">
-                <p>Score: </p>
+                <p>Score:</p>
             </div>
             
             <div className="loadingGradeContainer">
