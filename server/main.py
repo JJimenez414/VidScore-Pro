@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
+import math
 
 from functions import *
 
@@ -14,6 +15,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # Ensure the upload folder exists
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
+
 
 
 @app.route('/')
@@ -60,7 +62,8 @@ def postVideo():
     mean, dips, peaks, percentage = detect_long_dips_peaks('./downloads/audio.mp3')
 
     # this function needs to be updated | volume = avg_audio_level('./downloads/audio.mp3') 
-
+    if math.isnan(mean):
+        mean = 0
     # Check if percentage is higher than recommended
     audio_percentage = percentage * (25/100) # THIS NEEDS TO BE UPDATED
     # print(audio_percentage)
