@@ -1,6 +1,18 @@
+import { useState } from "react";
+import HelpDescription from "./helpDescription";
 
 
 function Header() {
+    const [activateHelp, setHelp] = useState(false);
+
+    function activateTab() {
+        if (activateHelp === false) {
+            setHelp(true);
+        } else {
+            setHelp(false);
+        }
+        console.log(activateHelp);
+    }
     return (
 
         <ul className="navBar">
@@ -8,7 +20,8 @@ function Header() {
                 <p> highRes </p>
             </li>
             <li> 
-                <p> help </p>
+                <button className="btnHelp" onClick={activateTab}> Help </button>
+                {activateHelp && <HelpDescription/>}
             </li>
             <li> 
                 <a href="https://calendly.com/mark_nanez/nineyes-marketing-inquiry?month=2024-07">

@@ -20,12 +20,14 @@ body {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  position: relative;
   background-color: #E0E0DB;
   height: 50%;
   color: #2A2829;
   overflow: hidden;
   margin: 0;
   padding: 0;
+  overflow: visible;
 }
 
 .navBar > li {
@@ -53,16 +55,43 @@ body {
   margin-right: 50px;
 }
 
+.btnHelp {
+  outline: 0;
+  border: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  background-color: #E0E0DB;
+}
+
+
+.helpDescription {
+  position: absolute;
+  width: 320px;
+  height: 350px;
+  right: 250px;
+  z-index: 1;
+  background-color: red;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.helpDescription > p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+}
+
 .btnAppointment {
   border: 0;
   outline: none;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 1.5rem;
-  background-color: #253551;
+  background-color: #253553;
   color: white;
   padding: 20px 30px;
   border-radius: 50px;
+  cursor: pointer;
 
 }
 
@@ -155,10 +184,6 @@ body {
 
 .descriptionFont {
   font-family: 'Roboto', sans-serif;
-}
-
-.feedBacks {
-  height: 
 }
 
 .headTitle {
