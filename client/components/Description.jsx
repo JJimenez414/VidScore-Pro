@@ -7,21 +7,37 @@ import Request from "./APIRequest";
 function Description(props) {
 
   const [total, setTotal] = useState(0);
-  const [scaled_percentage, setPercentage] = useState(0);
+  const [audio_percentage, setPercentage] = useState(0);
   const [length_percentage, setLengthPercentage] = useState(0);
   const [resolution_percentage, setResolutionPercentage] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [l_seconds, setSeconds] = useState(0);
+  const [height, setHeight] = useState(0);
+  const [width, setWidth] = useState(0);
+  const [mean, setMean] = useState(0);
+  const [dips, setDips] = useState(0);
+  const [peaks, setPeaks] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+
     const handleSendData = async () => {
-        setLoading(true);
+        setLoading(true)
         try {
           const result = await Request.sendData();
-          setPercentage(result.scaled_percentage);
-          setLengthPercentage(result.length_percent);
-          setResolutionPercentage(result.resolution_percent);
-        } finally {
+          await new Promise((resolve) => setTimeout(resolve, 2000))
+          setPercentage(result.audio_percentage);
+          setLengthPercentage(result.length_percentage);
+          setResolutionPercentage(result.resolution_percentage);
+          setDips(result.dips);
+          setMean(result.mean);
+          setPeaks(result.peaks);
+          setSeconds(result.l_seconds);
+          setWidth(result.width);
+          setHeight(result.height);
+          setTotal(result.audio_percentage + result.length_percentage + result.resolution_percentage);
           setLoading(false);
+        } catch(e) {
+          console.log(e);
         }
       };
 
@@ -31,49 +47,39 @@ function Description(props) {
 
     }, [props.fileExists]);
 
-   useEffect(() => {
-
-      setTotal(scaled_percentage + total);
-      console.log(length_percentage);
-      console.log(resolution_percentage);
-
-   }, [scaled_percentage])
-
   return ( 
+    <>
+      <div className="description"> 
+        <Grade 
+        grade={total + "%"}  
+        loading={loading}
+        />
+      
+        <div className="feedBacks">
+          <Feedback 
+            title="Length" 
+            grade={length_percentage} 
+            results={"Length: " + l_seconds + "s"} 
+            description="We determine the length of the video by analyzing the meta data."
+          />
 
-    <div className="description"> 
-    
-      <Grade grade={ loading ? "Loading..." : total} />
+          <Feedback 
+            title="Resolution" 
+            grade={resolution_percentage} 
+            results= {"Width: " + width + " Height: " + height}  
+            description="We determine resolution of the video by calculating the pixels inside the video frame.
+                          Anything below 1920 can reduce user retention."
+          />
 
-      <Feedback 
-        title="Length" 
-        grade={length_percentage} 
-        results="Result: 15 seconds"  
-        description="-:We analyse the length of the video and compare to the average length to short media content."
-      />
-      {/* <button onClick={handleSendData}>Hello world</button> */}
-
-      <Feedback 
-        title="Resolution" 
-        grade={resolution_percentage} 
-        results="Result: 15 seconds"  
-        description="-:We analyse the length of the video and compare to the average length to short media content."
-      />
-
-      <Feedback 
-        title="Audio Stableness" 
-        grade="00" 
-        results="Result: 15 seconds"  
-        description="-:We analyse the length of the video and compare to the average length to short media content."
-      />
-
-      <Feedback 
-        title="Volume Correctness"
-        grade="00" 
-        results="Result: 15 seconds"  
-        description="-:We analyse the length of the video and compare to the average length to short media content."
-      />      
-    </div>
+          <Feedback 
+            title="Audio Stableness" 
+            grade={audio_percentage} 
+            results={"Mean (DB LVL): " + mean + " Dips: " + dips + " Peaks: " + peaks}  
+            description="The dips and mean are calculated in a 2 second period span."
+          />
+        </div>
+      </div>
+    </>
   )
 }
 

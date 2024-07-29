@@ -11,7 +11,9 @@ function Header() {
                 <p> help </p>
             </li>
             <li> 
-                <button className="btnAppointment"> Consult </button>
+                <a href="https://calendly.com/mark_nanez/nineyes-marketing-inquiry?month=2024-07">
+                    <button className="btnAppointment"> Consult </button>
+                </a>
             </li>            
         </ul>
     )

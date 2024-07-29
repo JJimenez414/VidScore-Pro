@@ -11,9 +11,8 @@ body {
   position: absolute;
   top: 128px;
   right: 0px;
-  bottom: 100px;
+  bottom: 0px;
   width: 100%;
-
 }
 
 .navBar {
@@ -100,6 +99,7 @@ body {
   height: 100%;
   width: 100%;
   margin-right: 100px;
+    position: relative;
 }
 
 #inputLabel {
@@ -151,15 +151,15 @@ body {
 .card {
   border-bottom: solid #E0E0DB 2px;
   width: 600px;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .descriptionFont {
   font-family: 'Roboto', sans-serif;
 }
 
+.feedBacks {
+  height: 
+}
 
 .headTitle {
   display: flex;
@@ -167,7 +167,6 @@ body {
   justify-content: flex-end;
   align-items: center;
   padding-left: 0px;
-  margin: 10px;
 }
 
 .headTitle > li  {
@@ -262,7 +261,9 @@ li:nth-child(1) {
 .gradeBox {
   display: flex;
   justify-content: end;
+  align-items: center;
   width: 600px;
+  margin-top: 25px;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 30px;
@@ -272,4 +273,108 @@ li:nth-child(1) {
   margin-left: none;
   margin-bottom: 0px;
   border-bottom: solid #E0E0DB 2px;
+}
+
+.grade p {
+  margin: 0px;
+}
+
+/* Animation */
+
+.loadingGradeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 15px;
+  margin-left: 20px;
+}
+
+
+.dot-elastic {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: #2A2829;
+  animation: dot-elastic 1s infinite linear;
+}
+
+.dot-elastic::before, .dot-elastic::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dot-elastic::before {
+  left: -20px;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: #2A2829;
+  animation: dot-elastic-before 1s infinite linear;
+}
+
+.dot-elastic::after {
+  left: 20px;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: #2A2829;
+  animation: dot-elastic-after 1s infinite linear;
+}
+
+@keyframes dot-elastic {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1, 1.5);
+  }
+  75% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes dot-elastic-before {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1, 1.5);
+  }
+  50% {
+    transform: scale(1, 0.67);
+  }
+  75% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes dot-elastic-after {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1, 0.67);
+  }
+  75% {
+    transform: scale(1, 1.5);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
 }
