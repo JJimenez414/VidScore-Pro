@@ -90,6 +90,9 @@ def detect_long_dips_peaks(audio_path, frame_size=2048, hop_length=512, dip_db_t
     # Calculate the percentage of the video with long dips or peaks
     total_frames = len(rms)
     dip_peak_percentage = (total_long_dip_peak_frames / total_frames) * 100
+
+    if mean_rms_db == None:
+        return 0, len(long_dips_regions), len(long_peaks_regions), dip_peak_percentage
     
     return mean_rms_db, len(long_dips_regions), len(long_peaks_regions), dip_peak_percentage
 
@@ -116,7 +119,7 @@ def video_length(video):
         return seconds, 1
         # f"The video is a good length. At {int(seconds)} seconds, the video is {int(ideal_length - seconds)} seconds below ideal range."
 
-
+# Check for higher resolutions instead of 1920 & 1080
 def video_resolution(video):
 
     path = video
@@ -132,6 +135,19 @@ def video_resolution(video):
         return height, width, 1
         # output = f"The video quality is good: {int(height)} x {int(width)} pixels."
 
+
+def black_bars(video) -> bool:
+    path = video
+    vid = cv2.VideoCapture(path)
+
+    height = vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
+    width = vid.get(cv2.CAP_PROP_FRAME_WIDTH)
+
+    if width > height:
+        return 1 # True: There will be black bars
+    else:
+        return 0 # False: There will not be black bars
+    
 
 '''
 
