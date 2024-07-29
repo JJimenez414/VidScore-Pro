@@ -22,7 +22,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 # This will get video from frontend and do analyses on it
 @app.route('/postVideo', methods=['POST'])
 def postVideo():
-    global mean, dips, peaks, percentage, scaled_percentage, l_seconds, length_percent, height, width, resolution_percent
+    global mean, dips, peaks, percentage, audio_percentage, l_seconds, length_percentage, height, width, resolution_percentage
     # Check if the POST request has the file part
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
@@ -45,15 +45,15 @@ def postVideo():
     l_seconds, l_boolean = video_length(f"./uploads/{filename}")
 
     if l_boolean == 1:
-        length_percent = 25
+        length_percentage = 25
     else:
-        length_percent = 0
+        length_percentage = 0
     
     height, width, r_boolean = video_resolution(f"./uploads/{filename}")
     if r_boolean == 1:
-        resolution_percent = 25
+        resolution_percentage = 25
     else:
-        resolution_percent = 0
+        resolution_percentage = 0
         
 
     convert_mp4_to_mp3(f'./uploads/{filename}', './downloads/audio.mp3')
@@ -62,12 +62,12 @@ def postVideo():
     # this function needs to be updated | volume = avg_audio_level('./downloads/audio.mp3') 
 
     # Check if percentage is higher than recommended
-    scaled_percentage = percentage * (25/100) # THIS NEEDS TO BE UPDATED
-    # print(scaled_percentage)
-    if scaled_percentage > 2: 
-        scaled_percentage = 25 - int(scaled_percentage)
+    audio_percentage = percentage * (25/100) # THIS NEEDS TO BE UPDATED
+    # print(audio_percentage)
+    if audio_percentage > 2: 
+        audio_percentage = 25 - int(audio_percentage)
     else:
-        scaled_percentage = 25
+        audio_percentage = 25
     
     return jsonify({'nameRequest': "postVideo", 'filename': filename}) # Verify if this is correct
 
@@ -76,16 +76,15 @@ def postVideo():
 # This will send data back to frontend
 @app.route('/sendData', methods=['GET'])
 def sendData():
-    response = {'mean': mean, 
+    response = {'mean': int(mean), 
                 'dips': dips,
                 'peaks': peaks,
-                'percentage': percentage,
-                'scaled_percentage': scaled_percentage,
-                'l_seconds': l_seconds,
-                'length_percent': length_percent,
+                'audio_percentage': audio_percentage,
+                'l_seconds': int(l_seconds),
+                'length_percentage': length_percentage,
                 'height': height,
                 'width': width,
-                'resolution_percent': resolution_percent
+                'resolution_percentage': resolution_percentage
                 }
     
     return jsonify(response)
