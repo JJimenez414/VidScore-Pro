@@ -108,7 +108,6 @@ def video_length(video):
 
     ideal_length = 45
 
-
     # FUTURE IMPLEMENTATION:
     # Return a percentage value that changes based off how far it is from ideal length (Total percentage points are 25%)
     
