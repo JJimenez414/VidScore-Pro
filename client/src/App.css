@@ -11,9 +11,8 @@ body {
   position: absolute;
   top: 128px;
   right: 0px;
-  bottom: 100px;
+  bottom: 0px;
   width: 100%;
-
 }
 
 .navBar {
@@ -100,6 +99,7 @@ body {
   height: 100%;
   width: 100%;
   margin-right: 100px;
+    position: relative;
 }
 
 #inputLabel {
@@ -151,15 +151,15 @@ body {
 .card {
   border-bottom: solid #E0E0DB 2px;
   width: 600px;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .descriptionFont {
   font-family: 'Roboto', sans-serif;
 }
 
+.feedBacks {
+  height: 
+}
 
 .headTitle {
   display: flex;

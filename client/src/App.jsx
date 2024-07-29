@@ -16,10 +16,10 @@ function App() {
   return (
     <>
       <Header />
-        <div className="grid"> 
-          <DropContainer doesFileExists={doesFileExists}/>
-          <Description fileExists={fileExists}/>
-        </div>
+      <div className="grid"> 
+        <DropContainer doesFileExists={doesFileExists}/>
+        <Description fileExists={fileExists}/>
+      </div>
     </>
   )
 }
