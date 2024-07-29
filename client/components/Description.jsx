@@ -57,15 +57,17 @@ function Description(props) {
       
         <div className="feedBacks">
           <Feedback 
-            title="Length" 
+            title="Video Length" 
             grade={length_percentage} 
-            results={"Length: " + l_seconds + "s"} 
-            description="We determine the length of the video by analyzing the meta data."
+            results={"The video length is " + l_seconds + "s, which is below recommended."} 
+            results2={"The video length is " + l_seconds + "s, which is great for audiences."} 
+            description="Audiences' attention span are becoming shorter and shorter. That’s why video length is a key metric to track. We need audiences to watch and not click off due to a long video.
+"
           />
 
           <Feedback 
-            title="Resolution" 
-            grade={resolution_percentage} 
+            title="Video Resolution" 
+            grade={resolution_percentage}
             results= {"Width: " + width + " Height: " + height}  
             description="We determine resolution of the video by calculating the pixels inside the video frame.
                           Anything below 1920 can reduce user retention."

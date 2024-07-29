@@ -24,9 +24,13 @@ function Feedback (props) {
             </ul>
                 
             <div className={display === true ? "notVisible" : ""}>
-                <p className="descriptionFont">Percentage: {props.grade}%</p>
-                <p className="descriptionFont">{props.results}</p>
+                <p><strong>Importance:</strong></p>
                 <p className="desNote descriptionFont">{props.description}</p>
+                <p className="descriptionFont"><strong>Score: {props.grade}%</strong></p>
+                
+                <p className="descriptionFont">{props.results}</p>
+                <p className="descriptionFont">{props.results2}</p>
+                
             </div>
         </div>
     )
