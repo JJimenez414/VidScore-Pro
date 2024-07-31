@@ -69,15 +69,21 @@ function Description(props) {
             title="Video Resolution" 
             grade={resolution_percentage}
             results= {"Width: " + width + " Height: " + height}  
-            description="We determine resolution of the video by calculating the pixels inside the video frame.
-                          Anything below 1920 can reduce user retention."
+            description="Most social media platforms max out at 1920x1080 vertical resolution. This metric makes sure you have the best resolution for your content to ensure the audience will stay engaged in your content."
           />
 
           <Feedback 
             title="Audio Stableness" 
             grade={audio_percentage} 
             results={"Mean (DB LVL): " + mean + " Dips: " + dips + " Peaks: " + peaks}  
-            description="The dips and mean are calculated in a 2 second period span."
+            description="Stable audio provides the audience an uninterrupted listening experience while watching your videos. Having audio volume dips and peaks in a video can and will make your audience click off."
+          />
+
+          <Feedback 
+            title="Aspect : Ratio" 
+            grade={audio_percentage} 
+            results={"Mean (DB LVL): " + mean + " Dips: " + dips + " Peaks: " + peaks}  
+            description="The composition of  videos provide a visually appealing experience to audiences. A common problem with videos is the not so pleasing black bars that surround a video."
           />
         </div>
       </div>
