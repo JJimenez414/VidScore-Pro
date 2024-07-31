@@ -21,10 +21,9 @@ if not os.path.exists(UPLOAD_FOLDER):
 @app.route('/')
 
 # This will get video from frontend and do analyses on it
-# This will get video from frontend and do analyses on it
 @app.route('/postVideo', methods=['POST'])
 def postVideo():
-    global mean, dips, peaks, percentage, audio_percentage, l_seconds, length_percentage, height, width, resolution_percentage
+    global mean, dips, peaks, percentage, audio_percentage, l_seconds, length_percentage, height, width, resolution_percentage, black_bars
     # Check if the POST request has the file part
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
@@ -42,8 +41,6 @@ def postVideo():
 
     vFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename)) # video.mp4
 
-    
-
     l_seconds, l_boolean = video_length(f"./uploads/{filename}")
 
     if l_boolean == 1:
@@ -56,7 +53,8 @@ def postVideo():
         resolution_percentage = 25
     else:
         resolution_percentage = 0
-        
+
+    black_bars = black_bars(f"./uploads/{filename}")
 
     convert_mp4_to_mp3(f'./uploads/{filename}', './downloads/audio.mp3')
     mean, dips, peaks, percentage = detect_long_dips_peaks('./downloads/audio.mp3')
@@ -87,7 +85,8 @@ def sendData():
                 'length_percentage': length_percentage,
                 'height': height,
                 'width': width,
-                'resolution_percentage': resolution_percentage
+                'resolution_percentage': resolution_percentage,
+                'black_bars': black_bars
                 }
     
     return jsonify(response)

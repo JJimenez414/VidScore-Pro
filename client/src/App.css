@@ -3,6 +3,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
+  background-color: #0e1015;
 }
 
 .grid {
@@ -13,6 +14,7 @@ body {
   right: 0px;
   bottom: 0px;
   width: 100%;
+  /* background-color: #0e1015; */
 }
 
 .navBar {
@@ -20,8 +22,7 @@ body {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  position: relative;
-  background-color: #E0E0DB;
+  /* background-color: #0e1015; */
   height: 50%;
   color: #2A2829;
   overflow: hidden;
@@ -87,11 +88,25 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 1.5rem;
-  background-color: #253553;
+  background-color: #6723ff;
   color: white;
   padding: 20px 30px;
   border-radius: 50px;
   cursor: pointer;
+
+}
+
+.btnAppointment:hover {
+  background-color: #4d12c5;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  
+
+}
+
+.btnAppointment:hover {
+  background-color: #4d12c5;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  
 
 }
 
@@ -140,7 +155,7 @@ body {
 .dropBoxContainer {
   height: 355px;
   width: 600px;
-  background-color: #faf9f6;
+  
 }
 
 .dropBoxFile {
@@ -148,15 +163,22 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: white;
+  background-color: #6723ff;
   height: 100%;
   width: 100%;
-  border: dashed grey 2px;
+  border: dashed white 2px;
+  border-radius: 10px;
+  border-width: 4px;
+  /* border: dashed #4d12c5 2px; */
 }
 
 .dropBoxFile:hover {
-  background-color: #E0E0DB;
-  border: dashed black 2px;
+  background-color: #4d12c5;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  border: dashed rgb(184, 184, 184) 2px;
+  border-radius: 10px;
+  border-width: 4px;
+  /* border: dashed #6723ff 2px; */
 }
 
 .dropBoxFile p {
@@ -164,6 +186,8 @@ body {
   font-family: "Roboto", sans-serif;
   margin: 5px;
   font-weight: 400;
+  color: white;
+  font-weight: bold; 
 }
 
 .boxImg {
@@ -183,7 +207,16 @@ body {
 }
 
 .descriptionFont {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  
+}
+
+.feedBacks {
+  padding: 50px;
+  border-radius: 15px;
+  margin: 20px;
+  border: solid white;
 }
 
 .headTitle {
@@ -276,7 +309,7 @@ li:nth-child(1) {
   font-weight: 300;
   font-size: 15px;
   font-style: italic;
-  color: #2A2829;
+  color: #9b9ea3; /* old color #2A2829 */
 }
 
 .notVisible {
@@ -298,6 +331,8 @@ li:nth-child(1) {
   margin-left: none;
   margin-bottom: 0px;
   border-bottom: solid #E0E0DB 2px;
+  color: white;
+  font-family: 'Poppins';
 }
 
 .grade p {
@@ -313,6 +348,8 @@ li:nth-child(1) {
   width: 50px;
   height: 15px;
   margin-left: 20px;
+  color: white;
+  font-family: 'Poppins';
 }
 
 
@@ -321,7 +358,7 @@ li:nth-child(1) {
   width: 15px;
   height: 15px;
   border-radius: 10px;
-  background-color: #2A2829;
+  background-color: white; /* old color #2A2829 */
   animation: dot-elastic 1s infinite linear;
 }
 
@@ -337,7 +374,7 @@ li:nth-child(1) {
   width: 15px;
   height: 15px;
   border-radius: 10px;
-  background-color: #2A2829;
+  background-color: white; /* old color #2A2829 */
   animation: dot-elastic-before 1s infinite linear;
 }
 
@@ -346,7 +383,7 @@ li:nth-child(1) {
   width: 15px;
   height: 15px;
   border-radius: 10px;
-  background-color: #2A2829;
+  background-color: white; /* old color #2A2829 */
   animation: dot-elastic-after 1s infinite linear;
 }
 
