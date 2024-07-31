@@ -120,7 +120,7 @@ body {
 .dropBoxContainer {
   height: 355px;
   width: 600px;
-  background-color: #faf9f6;
+  
 }
 
 .dropBoxFile {
@@ -131,13 +131,19 @@ body {
   background-color: #6723ff;
   height: 100%;
   width: 100%;
-  border: dashed #4d12c5 2px;
+  border: dashed white 2px;
+  border-radius: 10px;
+  border-width: 4px;
+  /* border: dashed #4d12c5 2px; */
 }
 
 .dropBoxFile:hover {
   background-color: #4d12c5;
   transition: background-color 0.3s ease; /* Smooth transition for background color */
-  border: dashed #6723ff 2px;
+  border: dashed rgb(184, 184, 184) 2px;
+  border-radius: 10px;
+  border-width: 4px;
+  /* border: dashed #6723ff 2px; */
 }
 
 .dropBoxFile p {
@@ -168,10 +174,14 @@ body {
 .descriptionFont {
   font-family: 'Poppins', sans-serif;
   color: white;
+  
 }
 
 .feedBacks {
-  height: 
+  padding: 50px;
+  border-radius: 15px;
+  margin: 20px;
+  border: solid white;
 }
 
 .headTitle {
