@@ -75,14 +75,14 @@ function Description(props) {
           <Feedback 
             title="Video Resolution" 
             grade={resolution_percentage}
-            results= {"Width: " + width + " Height: " + height}  
+            results= { resolution_percentage === 25 ? "Video meets resolution requirements at " + width + "x" + height + "." : "Video doesn't meet resolution requirements at " + width + "x" + height + "."} 
             description="Most social media platforms max out at 1920x1080 vertical resolution. This metric makes sure you have the best resolution to ensure the audience will stay engaged in your content."
           />
 
           <Feedback 
             title="Audio Stableness" 
             grade={audio_percentage} 
-            results={"Mean (DB LVL): " + mean + " Dips: " + dips + " Peaks: " + peaks}  
+            results={"Video audio has " + dips + " dips & " + peaks + " peaks."}  
             description="Stable audio provides the audience an uninterrupted listening experience while watching your videos. Having audio volume dips and peaks in a video can and will make your audience click off."
           />
 
