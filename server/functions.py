@@ -135,13 +135,13 @@ def video_resolution(video):
         # output = f"The video quality is good: {int(height)} x {int(width)} pixels."
 
 
-def black_bars(video) -> bool:
+def aspect_ratio(video):
     path = video
     vid = cv2.VideoCapture(path)
 
     height = vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
     width = vid.get(cv2.CAP_PROP_FRAME_WIDTH)
-
+    
     if width > height:
         return 1 # True: There will be black bars
     else:
