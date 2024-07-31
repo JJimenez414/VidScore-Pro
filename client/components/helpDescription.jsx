@@ -3,9 +3,9 @@ function helpDescription () {
     
     return (
         <div className="helpDescription"> 
-            <h6>
+            <h4>
                 Welcome to HighRes,
-            </h6>
+            </h4>
 
             <p>
                 This is a social media video analysis software tailored to improve short form conternt, such as youtube shorts, reels, and tiktoks.
