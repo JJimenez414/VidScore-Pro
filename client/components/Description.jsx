@@ -74,8 +74,8 @@ function Description(props) {
           <Feedback 
             title="Video Resolution" 
             grade={resolution_percentage}
-            results= { resolution_percentage === 25 ? "Video meets resolution requirements at " + height + "x" + width + "." : "Video doesn't meet resolution requirements at " + height + "x" + width + "."} 
-            description="Most social media platforms max out at 1920x1080 vertical resolution. This metric makes sure you have the best resolution to ensure the audience will stay engaged in your content."
+            results= { resolution_percentage === 25 ? "Video meets resolution requirements at " + width + "x" + height + "." : "Video doesn't meet resolution requirements at " + width + "x" + height + "."} 
+            description="Most social media platforms max out at 1080x1920 vertical resolution. This metric makes sure you have the best resolution to ensure the audience will stay engaged in your content."
           />
 
           <Feedback 
