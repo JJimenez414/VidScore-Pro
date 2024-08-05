@@ -5,7 +5,8 @@ Client Server:
 
 Backend Server:
 
-(Windows)
-- source server/Scripts/activate
-(Mac)
-- source venv/lib/activate
+Create your own venv and use requirements.txt to import correct dependencies.
+To start your venv type:
+
+(Windows) : "source server/Scripts/activate"
+(Mac) : "source venv/lib/activate"
