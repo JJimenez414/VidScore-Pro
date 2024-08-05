@@ -23,7 +23,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 # This will get video from frontend and do analyses on it
 @app.route('/postVideo', methods=['POST'])
 def postVideo():
-    global mean, dips, peaks, percentage, audio_percentage, l_seconds, length_percentage, l_boolean, height, width, resolution_percentage, aspect_ratio, aspect_percentage
+    global mean, dips, peaks, percentage, audio_percentage, l_seconds, length_percentage, l_boolean, height, width, resolution_percentage, aspectR, aspect_percentage
     # Check if the POST request has the file part
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
@@ -54,9 +54,9 @@ def postVideo():
     else:
         resolution_percentage = 0
 
-    aspect_ratio = aspect_ratio(f"./uploads/{filename}")
+    aspectR = aspect_ratio(f"./uploads/{filename}")
 
-    if aspect_ratio:
+    if aspectR:
         aspect_percentage = 0
     else:
         aspect_percentage = 25
@@ -92,7 +92,7 @@ def sendData():
                 'height': height,
                 'width': width,
                 'resolution_percentage': resolution_percentage,
-                'aspect_ratio': aspect_ratio,
+                'aspect_ratio': aspectR,
                 'aspect_percentage': aspect_percentage
                 }
     
