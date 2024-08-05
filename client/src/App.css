@@ -22,7 +22,6 @@ body {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  /* background-color: #0e1015; */
   height: 50%;
   color: #2A2829;
   overflow: hidden;
@@ -40,16 +39,17 @@ body {
 .navBar > li:first-child {
   margin-right: auto;
   font-family: 'Poppins', sans-serif;
+  font-weight: bold;
   color: white;
-  font-weight: 400;
   font-size: 2.5rem;
   margin-left: 50px;
 }
 
 .navBar > li:nth-child(2) {
   font-family: 'Poppins', sans-serif;
-  font-weight: 300;
+  font-weight: bold;
   font-size: 1.5rem;
+  color: white
 }
 
 .navBar > li:nth-child(3) {
@@ -60,7 +60,7 @@ body {
   outline: 0;
   border: 0;
   font-family: 'Poppins', sans-serif;
-  font-weight: 400;
+  font-weight: bold;
   font-size: 1.3rem;
   background-color: #0e1015;
   color: white;
@@ -80,22 +80,17 @@ body {
   padding: 10px;
 }
 
-.helpDescription > p {
-  margin: 0px;
-  line-height: 20px;
-}
-
 .btnAppointment {
   border: 0;
   outline: none;
   font-family: 'Poppins', sans-serif;
-  font-weight: 400;
+  font-weight: bold;
   font-size: 1.5rem;
   background-color: #6723ff;
   color: white;
   padding: 20px 30px;
   border-radius: 50px;
-  cursor: pointer;
+
 }
 
 .btnAppointment:hover {
@@ -138,7 +133,7 @@ body {
   height: 100%;
   width: 100%;
   margin-right: 100px;
-  position: relative;
+    position: relative;
 }
 
 #inputLabel {
@@ -211,8 +206,7 @@ body {
   padding: 50px;
   border-radius: 15px;
   margin: 20px;
-  border: solid;
-  border-image: linear-gradient(#e66465, #9198e5) 1;
+  border: solid white;
 }
 
 .headTitle {
@@ -319,7 +313,7 @@ li:nth-child(1) {
   width: 600px;
   margin-top: 25px;
   font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 30px;
 }
 

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import HelpDescription from "./helpDescription";
 
-
 function Header() {
+
     const [activateHelp, setHelp] = useState(false);
 
     function activateTab() {
@@ -13,6 +13,7 @@ function Header() {
         }
         console.log(activateHelp);
     }
+
     return (
 
         <ul className="navBar">
