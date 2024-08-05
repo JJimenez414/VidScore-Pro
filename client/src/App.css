@@ -22,7 +22,6 @@ body {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  /* background-color: #0e1015; */
   height: 50%;
   color: #2A2829;
   overflow: hidden;
@@ -39,27 +38,53 @@ body {
 
 .navBar > li:first-child {
   margin-right: auto;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  color: white;
   font-size: 2.5rem;
   margin-left: 50px;
 }
 
 .navBar > li:nth-child(2) {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
   font-size: 1.5rem;
+  color: white
 }
 
 .navBar > li:nth-child(3) {
   margin-right: 50px;
 }
 
+.btnHelp {
+  outline: 0;
+  border: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
+  background-color: #0e1015;
+  color: white;
+}
+
+.helpDescription {
+  position: absolute;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  width: 320px;
+  height: 350px;
+  right: 250px;
+  z-index: 1;
+  color: white;
+  background-color: #253551;
+  border-radius: 10px;
+  padding: 10px;
+}
+
 .btnAppointment {
   border: 0;
   outline: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
   font-size: 1.5rem;
   background-color: #6723ff;
   color: white;
@@ -288,7 +313,7 @@ li:nth-child(1) {
   width: 600px;
   margin-top: 25px;
   font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 30px;
 }
 
