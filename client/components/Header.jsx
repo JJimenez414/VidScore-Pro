@@ -23,6 +23,7 @@ function Header() {
             <li> 
                 <button className="btnHelp" onClick={activateTab}> About </button>
                 {activateHelp && <HelpDescription/>}
+                
             </li>
             <li> 
                 <a href="https://calendly.com/mark_nanez/nineyes-marketing-inquiry?month=2024-07">
