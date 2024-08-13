@@ -17,7 +17,6 @@ function FileDrop (props) {
                 <div className="dropBoxFile">
                         <img src={logoDrop} alt="File drop logo" className="boxImg"/>
                         <p>Upload Video File <strong>(.mp4, .m4v, .mov)</strong></p>
-                        <p></p>
                 </div>
             </label>
         </div>

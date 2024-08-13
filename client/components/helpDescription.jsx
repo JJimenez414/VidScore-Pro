@@ -15,15 +15,14 @@ function helpDescription () {
             <br/>
 
             <p>
-                If you would like to improve your video, tips will be provided. However, if you want further help, make an appoitment with marketing expert
-                Mark Nanez. 
+                If you would like to improve your video, tips will be provided. However, if you want further help,refer to our consult resources on the top right.
             </p>
 
             <br/>
 
             <p>
-                Sincelry, 
-                HighRes.
+                Sincerely, 
+                VidScore Pro.
             </p>
         </div>
     )
