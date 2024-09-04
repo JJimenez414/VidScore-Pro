@@ -66,7 +66,7 @@ function Description(props) {
             title="Video Length" 
             grade={length_percentage} 
             results={
-              l_boolean === 0 ? "Video length is " + l_seconds + "s, which is below recommended." : "The video length is " + l_seconds + "s, which is great for audiences."
+              l_boolean === 0 ? "Video length is " + l_seconds + "s, which is above recommended." : "The video length is " + l_seconds + "s, which is great for audiences."
             } 
             description="Attention span on social media is short. It’s the video’s job to get all the relevant info out in a very effective time. Length standard is less than 45 seconds."
           />
