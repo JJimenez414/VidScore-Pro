@@ -232,9 +232,8 @@ else:
 
 '''
 
-
-
 # This function needs fixing: (Approach isn't giving accurate info) - OUT OF SERVICE
+'''
 def avg_audio_level(audio_path):
     # Load the audio file
     y, sr = librosa.load(audio_path, sr=None)
@@ -249,3 +248,4 @@ def avg_audio_level(audio_path):
     average_db = np.mean(rms_db)
     
     return average_db
+'''
