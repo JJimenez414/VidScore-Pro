@@ -26,7 +26,7 @@ function Header() {
                 
             </li>
             <li> 
-                <a href="https://calendly.com/mark_nanez/nineyes-marketing-inquiry?month=2024-07">
+                <a href="https://calendly.com/mark_nanez/nineyes-marketing-inquiry?month=2024-07" target="_blank">
                     <button className="btnAppointment"> Consult </button>
                 </a>
             </li>            
