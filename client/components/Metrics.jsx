@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import Feedback from "../components/Feedback"
-import Grade from "../components/Grade"
+import Metric from "./Metric"
+import Score from "./Score"
 import Request from "./APIRequest";
 
 
-function Description(props) {
+function Metrics(props) {
 
   const [total, setTotal] = useState(0);
   const [audio_percentage, setPercentage] = useState(0);
@@ -14,7 +14,6 @@ function Description(props) {
   const [l_seconds, setSeconds] = useState(0);
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
-  const [mean, setMean] = useState(0);
   const [dips, setDips] = useState(0);
   const [peaks, setPeaks] = useState(0);
   const [aspect_ratio, setAspectRatio] = useState(0);
@@ -33,14 +32,13 @@ function Description(props) {
           setlboolean(result.l_boolean);
           setResolutionPercentage(result.resolution_percentage);
           setDips(result.dips);
-          setMean(result.mean);
           setPeaks(result.peaks);
           setSeconds(result.l_seconds);
           setWidth(result.width);
           setHeight(result.height);
           setAspectPercentage(result.aspect_percentage)
-          setTotal(result.audio_percentage + result.length_percentage + result.resolution_percentage + result.aspect_percentage);
           setAspectRatio(result.aspect_ratio);
+          setTotal(result.audio_percentage + result.length_percentage + result.resolution_percentage + result.aspect_percentage);
           setLoading(false);
         } catch(e) {
           console.log(e);
@@ -55,14 +53,14 @@ function Description(props) {
 
   return ( 
     <>
-      <div className="description"> 
-        <Grade 
+      <div className="metricContainer"> 
+        <Score 
         grade={total + "%"}  
         loading={loading}
         />
       
-        <div className="feedBacks">
-          <Feedback 
+        <div className="metrics">
+          <Metric 
             title="Video Length" 
             grade={length_percentage} 
             results={
@@ -71,21 +69,21 @@ function Description(props) {
             description="Attention span on social media is short. It’s the video’s job to get all the relevant info out in a very effective time. Length standard is less than 45 seconds."
           />
 
-          <Feedback 
+          <Metric 
             title="Video Resolution" 
             grade={resolution_percentage}
             results= { resolution_percentage === 25 ? "Video meets resolution requirements at " + width + "x" + height + "." : "Video doesn't meet resolution requirements at " + width + "x" + height + "."} 
             description="Most social media platforms max out at 1080x1920 vertical resolution. This metric makes sure you have the best resolution to ensure the audience will stay engaged in your content."
           />
 
-          <Feedback 
+          <Metric 
             title="Audio Stableness" 
             grade={audio_percentage} 
             results={"Video audio has " + dips + " dips & " + peaks + " peaks."}  
             description="Stable audio provides the audience an uninterrupted listening experience while watching your videos. Having audio volume dips and peaks in a video can and will make your audience click off."
           />
 
-          <Feedback 
+          <Metric 
             title="Aspect : Ratio" 
             grade={aspect_percentage}
             results={
@@ -99,4 +97,4 @@ function Description(props) {
   )
 }
 
-export default Description;
+export default Metrics;

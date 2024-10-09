@@ -1,5 +1,5 @@
-import DropContainer from "../components/DropContainer"
-import Description from "../components/Description"
+import DropBoxContainer from "../components/DropBoxContainer"
+import Metrics from "../components/Metrics"
 import Header from "../components/Header"
 import './App.css'
 import { useState } from "react"
@@ -16,9 +16,9 @@ function App() {
   return (
     <>
       <Header />
-      <div className="grid"> 
-        <DropContainer doesFileExists={doesFileExists}/>
-        <Description fileExists={fileExists}/>
+      <div className="grid">
+        <DropBoxContainer doesFileExists={doesFileExists}/>
+        <Metrics fileExists={fileExists}/>
       </div>
     </>
   )

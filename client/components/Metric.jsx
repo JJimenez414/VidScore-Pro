@@ -1,5 +1,5 @@
 import { useState } from "react";
-function Feedback (props) {
+function Metric (props) {
 
     const [display, setDisplay] = useState(true);
 
@@ -36,4 +36,4 @@ function Feedback (props) {
     )
 }
 
-export default Feedback;
+export default Metric;

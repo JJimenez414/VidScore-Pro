@@ -129,7 +129,7 @@ body {
   text-align: center;
 }
 
-.dropBox {
+.dropBoxContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,7 +137,7 @@ body {
   width: 100%;
 }
 
-.description {
+.metricContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,7 +155,7 @@ body {
 }
 
 
-.dropBoxContainer {
+.dropBox {
   height: 355px;
   width: 600px;
   
@@ -213,7 +213,7 @@ body {
   
 }
 
-.feedBacks {
+.metrics {
   height: 500px;
   overflow: scroll;
   padding: 50px;
@@ -337,7 +337,7 @@ li:nth-child(1) {
   display: none;
 }
 
-.gradeBox {
+.scoreContainer {
   display: flex;
   justify-content: end;
   align-items: center;
@@ -346,33 +346,25 @@ li:nth-child(1) {
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
   font-size: 30px;
+  color: white;
 }
 
-.grade {
-  margin-left: none;
-  margin-bottom: 0px;
+.scoreContainer p {
+  margin: 0px;
+}
+
+.score {
+  text-align: center;
+  padding: 10px;
   border-bottom: solid #E0E0DB 2px;
   color: white;
-  font-family: 'Poppins';
 }
 
-.grade p {
+.score p {
   margin: 0px;
 }
 
 /* Animation */
-
-.loadingGradeContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 15px;
-  margin-left: 20px;
-  color: white;
-  font-family: 'Poppins';
-}
-
 
 .dot-elastic {
   position: relative;

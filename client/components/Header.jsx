@@ -1,5 +1,5 @@
 import { useState } from "react";
-import HelpDescription from "./helpDescription";
+import HelpDescription from "./About";
 
 function Header() {
 
