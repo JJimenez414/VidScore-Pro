@@ -1,7 +1,6 @@
 import FileDrop from "./FileDrop"
 import Request from "./APIRequest"
 import Video from "./Video";
-import Grade from "./Grade"
 import { useEffect, useState } from "react";
 
 function DropBox (props) {

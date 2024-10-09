@@ -1,4 +1,4 @@
-function helpDescription () {
+function About () {
     
     return (
         <div className="helpDescription"> 
@@ -29,4 +29,4 @@ function helpDescription () {
 
 }
 
-export default helpDescription;
+export default About;

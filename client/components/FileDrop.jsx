@@ -11,7 +11,7 @@ function FileDrop (props) {
 
 
     return (
-        <div className="dropBoxContainer">
+        <div className="dropBox">
             <label htmlFor="input-video" id="inputLabel"> 
                 <input type="file" id="input-video" hidden onChange={handleChange}/>
                 <div className="dropBoxFile">
