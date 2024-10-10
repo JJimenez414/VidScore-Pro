@@ -1,0 +1,26 @@
+version: '1'
+services:
+  frontend:
+    build:
+      context: ./client
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+
+  backend:
+    build:
+      context: ./server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./server:/usr/src/app
+      - ./uploads:/app/uploads
+      - ./downloads:/app/downloads
+    environment:
+      - FLASK_ENV=development  # or NODE_ENV=development for Node.js
+    command: python main.py     # If Flask (or npm start for Node.js)
