@@ -77,16 +77,6 @@ def postVideo():
             audio_percentage = 0
         else:
             audio_percentage = 25
-
-
-
-        # if it's not 0, then adjust percentage marks accordinally
-        # audio_percentage = percentage * (25/100) # takes dips and peaks percentages from video, and puts it in a 25% scale
-        # print(audio_percentage)
-        # if audio_percentage > 2: # if audio percentage is significant, then subtract it from 25
-        #     audio_percentage = 25 - int(audio_percentage)
-        # else:
-        #     audio_percentage = 25 # if it's not that big, then just equal it to 25
     
     return jsonify({'nameRequest': "postVideo", 'filename': filename}) # Verify if this is correct
 
