@@ -21,8 +21,6 @@ def convert_mp4_to_mp3(video_path, audio_path):
     audio_clip.close()
     video_clip.close()
 
-    # print(f"Converted {video_path} to {audio_path}")
-
 # Returns # of dips and peaks including percentage
 def detect_long_dips_peaks(audio_path, frame_size=2048, hop_length=512, dip_db_threshold=-5, peak_db_threshold=5, min_duration=2.0):
     # Load the audio file
@@ -135,6 +133,7 @@ def video_resolution(video):
         # output = f"The video quality is good: {int(height)} x {int(width)} pixels."
 
 
+# This will make sure there's no black bars on top and the bottom of a vertical video
 def aspect_ratio(video):
     path = video
     vid = cv2.VideoCapture(path)
@@ -146,106 +145,3 @@ def aspect_ratio(video):
         return 1 # True: There will be black bars
     else:
         return 0 # False: There will not be black bars
-    
-
-'''
-
-def butter_bandpass(lowcut, highcut, fs, order=5):
-    nyquist = 0.5 * fs
-    low = lowcut / nyquist
-    high = highcut / nyquist
-    b, a = butter(order, [low, high], btype='band')
-    return b, a
-
-def bandpass_filter(data, lowcut, highcut, fs, order=5):
-    b, a = butter_bandpass(lowcut, highcut, fs, order=order)
-    y = lfilter(b, a, data)
-    return y
-
-def notch_filter(data, freq, fs, quality=30):
-    nyquist = 0.5 * fs
-    freq = freq / nyquist
-    b, a = iirnotch(freq, quality)
-    y = lfilter(b, a, data)
-    return y
-
-def calculate_snr(signal, noise):
-    signal_power = np.mean(signal ** 2)
-    noise_power = np.mean(noise ** 2)
-    snr = 10 * np.log10(signal_power / noise_power)
-    return snr
-
-def analyze_noise(video_path, noise_threshold=20, lowcut=300, highcut=3400, fs=44100):
-    # Load video file
-    video = mp.VideoFileClip(video_path)
-    
-    # Extract audio
-    audio = video.audio.to_soundarray(fps=fs)
-    
-    # Convert stereo to mono by averaging channels if necessary
-    if audio.ndim == 2:
-        audio = np.mean(audio, axis=1)
-    
-    # Apply bandpass filter to isolate speech frequencies
-    filtered_audio = bandpass_filter(audio, lowcut, highcut, fs)
-    
-    # Estimate noise by subtracting filtered signal from the original signal
-    noise = audio - filtered_audio
-    
-    # Calculate SNR
-    snr = calculate_snr(filtered_audio, noise)
-    
-    # Detect specific types of noise
-    # Hiss (high-frequency noise)
-    high_freq_noise = bandpass_filter(noise, 3000, fs/2, fs)
-    hiss_power = np.mean(high_freq_noise ** 2)
-    
-    # Hum (low-frequency noise)
-    hum_noise = notch_filter(noise, 50, fs)  # Assuming 50Hz hum
-    hum_power = np.mean(hum_noise ** 2)
-    
-    # Clicks and pops (sudden sharp noises)
-    transient_noise = bandpass_filter(noise, 2000, 8000, fs)
-    transient_power = np.mean(transient_noise ** 2)
-    
-    noise_info = {
-        "snr": snr,
-        "hiss_power": hiss_power,
-        "hum_power": hum_power,
-        "transient_power": transient_power
-    }
-    
-    # Determine if audio is noisy based on the threshold
-    is_noisy = snr < noise_threshold or hiss_power > 1e-5 or hum_power > 1e-5 or transient_power > 1e-5
-    
-    return is_noisy, noise_info
-
-
-# Example usage
-video_path = "path_to_your_video_file.mp4"
-is_noisy, noise_info = analyze_noise(video_path)
-if is_noisy:
-    print("The audio has an outstanding amount of noise.")
-    print("Noise details:", noise_info)
-else:
-    print("The audio is not noisy.")
-
-'''
-
-# This function needs fixing: (Approach isn't giving accurate info) - OUT OF SERVICE
-'''
-def avg_audio_level(audio_path):
-    # Load the audio file
-    y, sr = librosa.load(audio_path, sr=None)
-    
-    # Calculate RMS energy for the audio signal
-    rms = librosa.feature.rms(y=y)[0]
-    
-    # Convert RMS energy to dB
-    rms_db = librosa.amplitude_to_db(rms, ref=np.max)
-    
-    # Calculate the average dB level
-    average_db = np.mean(rms_db)
-    
-    return average_db
-'''
