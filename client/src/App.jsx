@@ -1,25 +1,19 @@
-import DropBoxContainer from "../components/DropBoxContainer"
-import Metrics from "../components/Metrics"
+import UploadPage from "../components/UploadPage";
 import Header from "../components/Header"
 import './App.css'
-import { useState } from "react"
-
 
 function App() {
   
-  const [fileExists, setFileExists] = useState();
-
-  function doesFileExists(exists) {
-    setFileExists(exists)
-  }
 
   return (
     <>
+
+      {/* displays the header */}
       <Header />
-      <div className="grid">
-        <DropBoxContainer doesFileExists={doesFileExists}/>
-        <Metrics fileExists={fileExists}/>
-      </div>
+
+      {/* display uploadpage with dropbox and metrics */}
+      <UploadPage/>
+    
     </>
   )
 }

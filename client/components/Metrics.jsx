@@ -53,13 +53,18 @@ function Metrics(props) {
 
   return ( 
     <>
+    
       <div className="metricContainer"> 
+    
+        {/* Display the score */}
         <Score 
         grade={total + "%"}  
         loading={loading}
         />
-      
+    
         <div className="metrics">
+    
+          {/* Displays each metric. Each metric has four props, title, grade, results, and a description */}
           <Metric 
             title="Video Length" 
             grade={length_percentage} 

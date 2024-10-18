@@ -7,7 +7,7 @@ body {
   overflow-x: hidden;
 }
 
-.grid {
+.upLoadPageGrid {
   display: grid;
   grid-template-columns: repeat(2,1fr);
   position: absolute;
@@ -49,11 +49,6 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
-  color: white
-}
-
-.navBar > li:nth-child(3) {
-  margin-right: 50px;
 }
 
 .btnHelp {
@@ -69,64 +64,11 @@ body {
   padding: 20px 30px;
   transition: ease-out 1s;
   box-shadow: inset 0px 0px  #DE86E7;
+  cursor: pointer;
 }
 
 .btnHelp:hover {
   box-shadow: inset 200px 0px  #DE86E7;
-}
-
-.helpDescription {
-  position: absolute;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-  width: 320px;
-  height: 350px;
-  top: 120px;
-  right: 250px;
-  z-index: 1;
-  color: white;
-  background-color: #333;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.helpDescription > p {
-  margin: 0;
-}
-
-.btnAppointment {
-  border: 0;
-  outline: none;
-  font-family: 'Poppins', sans-serif;
-  font-weight: bold;
-  font-size: 1.5rem;
-  background-color: #6723ff;
-  color: white;
-  padding: 20px 30px;
-  border-radius: 50px;
-}
-
-.btnAppointment:hover {
-  background-color: #4d12c5;
-  transition: background-color 0.3s ease; /* Smooth transition for background color */
-  
-
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 86vh;
-  width: 100vw;
-  background-color: #E0E0DB;
-}
-
-.container h1 {
-  margin: 0;
-  float: left;
-  text-align: center;
 }
 
 .dropBoxContainer {
@@ -172,6 +114,7 @@ body {
   border: dashed white 2px;
   border-radius: 10px;
   border-width: 4px;
+  cursor: pointer;
 }
 
 .dropBoxFile:hover {
@@ -268,6 +211,7 @@ li:nth-child(1) {
   height: 50px;
   width: 50px;
   position: relative;
+  cursor: pointer;
 }
 
 .arrowUp {
@@ -350,26 +294,31 @@ li:nth-child(1) {
 }
 
 .scoreContainer p {
-  margin: 0px;
+  margin-left: 0px;
 }
 
 .score {
-  text-align: center;
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  margin: 15px;
+  width: 70px;
+  height: 40px;
   border-bottom: solid #E0E0DB 2px;
   color: white;
 }
 
 .score p {
-  margin: 0px;
+  margin: auto;
 }
 
 /* Animation */
 
 .dot-elastic {
+  margin: auto;
   position: relative;
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   border-radius: 10px;
   background-color: white; /* old color #2A2829 */
   animation: dot-elastic 1s infinite linear;
@@ -384,8 +333,8 @@ li:nth-child(1) {
 
 .dot-elastic::before {
   left: -20px;
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   border-radius: 10px;
   background-color: white; /* old color #2A2829 */
   animation: dot-elastic-before 1s infinite linear;
@@ -393,8 +342,8 @@ li:nth-child(1) {
 
 .dot-elastic::after {
   left: 20px;
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   border-radius: 10px;
   background-color: white; /* old color #2A2829 */
   animation: dot-elastic-after 1s infinite linear;
@@ -468,7 +417,7 @@ li:nth-child(1) {
 /* Desktops (Large Devices) */
 @media screen and (max-width: 1400px) {
   
-  .grid {
+  .upLoadPageGrid {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -499,7 +448,7 @@ li:nth-child(1) {
 @media screen and (max-width: 767px) {
 
 
-  .grid {
+  .upLoadPageGrid {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -599,6 +548,7 @@ li:nth-child(1) {
   .dropBoxContainer {
     height: 300px;
     width: 350px;
+    background-color: red;
     
   }
   

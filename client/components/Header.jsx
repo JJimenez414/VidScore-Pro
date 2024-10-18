@@ -1,18 +1,9 @@
 import { useState } from "react";
-import HelpDescription from "./About";
 
 function Header() {
 
     const [activateHelp, setHelp] = useState(false);
 
-    function activateTab() {
-        if (activateHelp === false) {
-            setHelp(true);
-        } else {
-            setHelp(false);
-        }
-        console.log(activateHelp);
-    }
 
     return (
 
@@ -21,15 +12,8 @@ function Header() {
                 <p> VidScore Pro </p>
             </li>
             <li> 
-                <button className="btnHelp" onClick={activateTab}> About </button>
-                {activateHelp && <HelpDescription/>}
-                
-            </li>
-            <li> 
-                <a href="https://calendly.com/mark_nanez/nineyes-marketing-inquiry?month=2024-07">
-                    <button className="btnAppointment"> Consult </button>
-                </a>
-            </li>            
+                <button className="btnHelp"> About </button>
+            </li>   
         </ul>
     )
 }
