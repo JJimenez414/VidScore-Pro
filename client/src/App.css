@@ -3,7 +3,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-color: #0e1015;
+  background-color: #fafafa;
   overflow-x: hidden;
 }
 
@@ -20,55 +20,70 @@ body {
 .navBar {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
-  height: 50%;
+  width: 100%;
   color: #2A2829;
   overflow: hidden;
   margin: 0;
   padding: 0;
+  /* background-color: rgb(251, 99, 99); */
 }
 
 .navBar > li {
   list-style: none;
   margin-right: 2em;
   overflow: hidden;
-
+  margin: 0px;
 }
 
 .navBar > li:first-child {
-  margin-right: auto;
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
-  color: white;
-  font-size: 2.5rem;
+  color: #b4a4e5;
+  font-size: 3rem;
   margin-left: 50px;
+  margin-right: 0px;
+}
+
+.navBar > li:first-child  > p {
+  cursor: pointer;
 }
 
 .navBar > li:nth-child(2) {
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
+  margin-left: 30px;
 }
 
-.btnHelp {
-  outline: 0;
-  border-radius: 50px;
-  border: solid 3px white;
-  border-color: #DE86E7;
+.navBar > li:nth-child(5) {
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
-  font-size: 1.3rem;
-  background-color: #0e1015;
-  color: white;
-  padding: 20px 30px;
-  transition: ease-out 1s;
-  box-shadow: inset 0px 0px  #DE86E7;
-  cursor: pointer;
+  font-size: 1.5rem;
+  margin-left: auto;
+  margin-right: 50px; 
 }
 
-.btnHelp:hover {
-  box-shadow: inset 200px 0px  #DE86E7;
+/* .navBarDivider {
+  height: 100px;
+  width: 2px;
+  border-left: 2px solid black;
+  margin: 0px 30px;
+} */
+
+.navBarBtn {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  color: black;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  margin: 0px 20px 0px 20px;
+}
+
+.navBarBtn:hover {
+  color: #b4a4e5;
 }
 
 .dropBoxContainer {
@@ -152,7 +167,7 @@ body {
 
 .descriptionFont {
   font-family: 'Poppins', sans-serif;
-  color: white;
+  color: black;
   
 }
 
@@ -274,7 +289,7 @@ li:nth-child(1) {
   font-weight: 300;
   font-size: 15px;
   font-style: italic;
-  color: #9b9ea3; /* old color #2A2829 */
+  color: black; /* old color #2A2829 */
 }
 
 .notVisible {
@@ -290,7 +305,7 @@ li:nth-child(1) {
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
   font-size: 30px;
-  color: white;
+  color: black;
 }
 
 .scoreContainer p {
@@ -304,8 +319,8 @@ li:nth-child(1) {
   margin: 15px;
   width: 70px;
   height: 40px;
-  border-bottom: solid #E0E0DB 2px;
-  color: white;
+  border-bottom: solid black 2px;
+  color: black;
 }
 
 .score p {
@@ -483,11 +498,16 @@ li:nth-child(1) {
   .navBar > li:first-child {
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    color: white;
+    color: red;
     font-size: 2.5rem;
     margin-left: 50px;
     grid-area: title;
     margin: 0px;
+    background-color: blue;
+  }
+
+  .navBar > li:first-child > p {
+    cursor: pointer;
   }
   
   .navBar > li:nth-child(2) {
