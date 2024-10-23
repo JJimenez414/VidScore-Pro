@@ -8,13 +8,10 @@ body {
 }
 
 .upLoadPageGrid {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  position: absolute;
-  top: 128px;
-  right: 0px;
-  bottom: 0px;
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .navBar {
@@ -90,8 +87,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
+  height: 600px;
 }
 
 .metricContainer {
@@ -99,11 +95,8 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  grid-column: 2;
-  height: 100%;
-  width: 100%;
-  margin-right: 100px;
   position: relative;
+  background-color: red;
 }
 
 #inputLabel {
@@ -113,8 +106,9 @@ body {
 
 
 .dropBox {
-  height: 355px;
-  width: 600px;
+  height: 100%;;
+  width: 100%;;
+  background-color: red;
   
 }
 
@@ -123,12 +117,12 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #6723ff;
+  background-color: #9868ff;
   height: 100%;
   width: 100%;
   border: dashed white 2px;
   border-radius: 10px;
-  border-width: 4px;
+  border-width: 5px;
   cursor: pointer;
 }
 
@@ -568,7 +562,6 @@ li:nth-child(1) {
   .dropBoxContainer {
     height: 300px;
     width: 350px;
-    background-color: red;
     
   }
   

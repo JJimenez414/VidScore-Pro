@@ -57,15 +57,15 @@ function Metrics(props) {
       <div className="metricContainer"> 
     
         {/* Display the score */}
-        <Score 
+        {/* <Score 
         grade={total + "%"}  
         loading={loading}
-        />
+        /> */}
     
         <div className="metrics">
     
           {/* Displays each metric. Each metric has four props, title, grade, results, and a description */}
-          <Metric 
+          {/* <Metric 
             title="Video Length" 
             grade={length_percentage} 
             results={
@@ -95,7 +95,7 @@ function Metrics(props) {
               aspect_ratio === 0 ? "Video meets aspect ratio standards." : "Content doesn't meet aspect ratio standards."
             }  
             description="The composition of  videos provide a visually appealing experience to audiences. A common problem with videos is the not so pleasing black bars that surround a video."
-          />
+          /> */}
         </div>
       </div>
     </>
