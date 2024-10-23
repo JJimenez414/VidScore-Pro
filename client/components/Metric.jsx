@@ -3,6 +3,7 @@ function Metric (props) {
 
     const [display, setDisplay] = useState(true);
 
+    // when a card is clicked, the display changes from true/false
     function cardDisplay(display) {
         setDisplay(display);
       }
@@ -10,19 +11,23 @@ function Metric (props) {
 
     return (
         <div className="card descriptionFont" >
+            
             <ul className="headTitle">
                 <li>
+                    {/* display the tittle */}
                     <h1 className="descriptionFont">{props.title}</h1> 
                 </li>
 
                 <li>    
+                    {/* display arrow with animation */}
                     <div className="boxArrow" onClick={() => display === false ? cardDisplay(true) : cardDisplay(false)}>
                         <div className={display === true ? "arrowUp" : "arrowDow"}></div>
                         <div className={display === true ? "arrowUp" : "arrowDow"}></div>
                     </div>
                 </li>
             </ul>
-                
+            
+            {/* notVisible is a class that makes the card invisible. This class is added whe a card is clicked.  */}
             <div className={display === true ? "notVisible" : ""}>
                 <p><strong>Importance:</strong></p>
                 <p className="desNote descriptionFont">{props.description}</p>

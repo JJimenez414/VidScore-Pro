@@ -4,6 +4,7 @@ function Score(props) {
                 <p>Score:</p>
                 <div className="score">
                     { props.loading ? <div className="dot-elastic"></div> : <p>{props.grade}</p>}
+                    {/* <div className="dot-elastic"></div> */}
                 </div>
         </div>
     )
