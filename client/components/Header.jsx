@@ -9,10 +9,25 @@ function Header() {
 
         <ul className="navBar">
             <li> 
-                <p> VidScore Pro </p>
+
+                <p> VidScore Pro </p> 
+
             </li>
+
             <li> 
-                <button className="btnHelp"> About </button>
+                <button className="navBarBtn"> About </button>
+            </li>   
+
+            <li> 
+                <button className="navBarBtn"> Help </button>
+            </li>   
+
+            <li> 
+                <button className="navBarBtn"> Library </button>
+            </li>   
+
+            <li> 
+                <button className="navBarBtn"> Login </button>
             </li>   
         </ul>
     )
