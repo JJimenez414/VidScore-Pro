@@ -96,7 +96,6 @@ body {
   align-items: center;
   flex-direction: column;
   position: relative;
-  background-color: red;
 }
 
 #inputLabel {
@@ -108,8 +107,6 @@ body {
 .dropBox {
   height: 100%;;
   width: 100%;;
-  background-color: red;
-  
 }
 
 .dropBoxFile {
@@ -157,6 +154,7 @@ body {
 .card {
   border-bottom: solid #E0E0DB 2px;
   width: 600px;
+  flex-direction: row;
 }
 
 .descriptionFont {
@@ -165,6 +163,32 @@ body {
   
 }
 
+
+.cardContainer {
+  width: auto;
+  height: 400px;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.metricCards {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  width: 100%;
+  height: auto;
+  overflow:scroll;
+}
+
+.homePage {
+  width: 100%;
+  height: auto;
+}
+/* Border for Metrics */
 .metrics {
   height: 500px;
   overflow: scroll;
@@ -178,16 +202,16 @@ body {
 
 @keyframes changeBorderColor {
   0% {
-    border-color: #6723ff; /* Initial color */
+    border-color: #b4a4e5; /* Initial color */
   }
   33% {
     border-color: #DE86E7; /* Intermediate color */
   }
   66% {
-    border-color: #FF23FF; /* Final color (same as initial to loop smoothly) */
+    border-color: #ff60ff; /* Final color (same as initial to loop smoothly) */
   }
   100% {
-    border-color: #6723ff; /* Initial color */
+    border-color: #b4a4e5; /* Initial color */
   }
 }
 
@@ -204,6 +228,7 @@ body {
   list-style: none;
   margin-right: 2em;
   overflow: hidden;
+  flex-direction: row;
 }
 
 li:nth-child(1) {
@@ -418,7 +443,7 @@ li:nth-child(1) {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #39FF14;
+  background-color: #8484848d;
   border-radius: 100vw;
   margin-right: 30px;
 }

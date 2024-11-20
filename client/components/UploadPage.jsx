@@ -1,5 +1,5 @@
-import DropBox from "../components/DropBox";
-import Metrics from "../components/Metrics"
+import DropBox from "./DropBox";
+import MetricTest from "./MetricTest";
 import { useState } from 'react'
 
 function UploadPage() {
@@ -17,9 +17,6 @@ function UploadPage() {
             
         {/* we will display the drop box. doesFileExists will be used to display the loading animation for the score  */}
         <DropBox doesFileExists={doesFileExists}/>
-
-        {/* display metrics */}
-        <Metrics fileExists={fileExists}/>
 
     </div>
 

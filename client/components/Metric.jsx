@@ -14,7 +14,7 @@ function Metric (props) {
             
             <ul className="headTitle">
                 <li>
-                    {/* display the tittle */}
+                    {/* display the title */}
                     <h1 className="descriptionFont">{props.title}</h1> 
                 </li>
 
@@ -27,7 +27,7 @@ function Metric (props) {
                 </li>
             </ul>
             
-            {/* notVisible is a class that makes the card invisible. This class is added whe a card is clicked.  */}
+            {/* notVisible is a class that makes the card invisible. This class is added when a card is clicked.  */}
             <div className={display === true ? "notVisible" : ""}>
                 <p><strong>Importance:</strong></p>
                 <p className="desNote descriptionFont">{props.description}</p>
