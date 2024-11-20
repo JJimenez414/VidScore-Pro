@@ -1,6 +1,6 @@
-import DropBox from "../components/DropBox";
-import Metrics from "../components/Metrics"
+import Summary from "./Summary";
 import { useState } from 'react'
+import UploadConatiner from "./UploadContainer";
 
 function UploadPage() {
 
@@ -16,10 +16,19 @@ function UploadPage() {
     <div className="upLoadPageGrid">
             
         {/* we will display the drop box. doesFileExists will be used to display the loading animation for the score  */}
-        <DropBox doesFileExists={doesFileExists}/>
+        {/* <DropBox doesFileExists={doesFileExists}/> */}
 
         {/* display metrics */}
-        <Metrics fileExists={fileExists}/>
+        {/* <Metrics fileExists={fileExists}/> */}
+
+        <div className='uploadContainer'>
+
+          <UploadConatiner doesFileExists={doesFileExists}/>
+          <Summary/>
+
+        </div>
+
+
 
     </div>
 

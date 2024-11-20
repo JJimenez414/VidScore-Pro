@@ -8,14 +8,64 @@ body {
 }
 
 .upLoadPageGrid {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 128px;
   right: 0px;
   bottom: 0px;
   width: 100%;
 }
+
+/* continer where the upload and summary are going to live */
+.uploadContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 75%;
+  width: 50%;
+  border-radius: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* this is the container to upload the video. */
+.upload {
+  background-color: #b4a4e5;
+  height: 100%;
+  width: 100%;
+  border-radius: 40px 0px 0px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background ease-in 0.3s;
+  font-family: 'Poppins', sans-serif;
+}
+
+.upload:hover {
+  background-color: #bdb4e0;
+}
+
+#uploadLabel {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.summaryBox {
+  background-color: rgb(234, 234, 234);
+  border-radius: 0px 40px 40px 0px;
+  font-family: 'Poppins', sans-serif;
+  font-size: medium;
+  outline: none;
+  padding: 30px;
+  resize: none
+}
+
 
 .navBar {
   display: flex;
@@ -27,7 +77,6 @@ body {
   overflow: hidden;
   margin: 0;
   padding: 0;
-  /* background-color: rgb(251, 99, 99); */
 }
 
 .navBar > li {
@@ -107,8 +156,8 @@ body {
 }
 
 #inputLabel {
-  height: 85%;
-  width: 90%;
+  height: 100%;
+  width: 100%;
 }
 
 
@@ -568,8 +617,6 @@ li:nth-child(1) {
   .dropBoxContainer {
     height: 300px;
     width: 350px;
-    background-color: red;
-    
   }
   
   .navBar > li:first-child {
