@@ -1,36 +1,13 @@
-import { useState } from "react";
-
 function Header() {
+  return (
 
-    const [activateHelp, setHelp] = useState(false);
-
-
-    return (
-
-        <ul className="navBar">
-            <li> 
-
-                <p> VidScore Pro </p> 
-
-            </li>
-
-            <li> 
-                <button className="navBarBtn"> About </button>
-            </li>   
-
-            <li> 
-                <button className="navBarBtn"> Help </button>
-            </li>   
-
-            <li> 
-                <button className="navBarBtn"> Library </button>
-            </li>   
-
-            <li> 
-                <button className="navBarBtn"> Login </button>
-            </li>   
-        </ul>
-    )
+    // creates a simple list items 
+    <ul className="navBar">
+        <li className="font-caveat">Title</li>
+        <li>Tool</li>
+        <li>Sign In</li>
+    </ul>
+  ) 
 }
 
-export default Header;
+export default Header
