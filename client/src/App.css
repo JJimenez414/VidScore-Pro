@@ -57,6 +57,14 @@ body, html {
   margin-left: auto;
 }
 
+.nav-bar-btn {
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  color: white;
+  height: 100px;
+}
+
 /* this class will be used for different features. makes all of the components inside center */
 .component {
   margin: 90px 0px 90px 0px;
@@ -150,7 +158,7 @@ body, html {
   color: white;
 }
 
-/* makesx the grid span two blocks */
+/* makes the grid span two blocks */
 .scoreGrid {
   grid-row: 1 / span 2;
 }
@@ -220,6 +228,7 @@ body, html {
   margin-left: auto;
 }
 
+/* style the container that will hold the metrics and video upload */
 .video-upload-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -228,6 +237,7 @@ body, html {
   width: calc(100% - 300px);
 }
 
+/* styles the container that will hold the upload  */
 .video-upload {
   height: 100%;
   width: 500px;
@@ -241,6 +251,7 @@ body, html {
   cursor: pointer;
 }
 
+/* Adjusts the logo and text */
 .video-upload-icon-container {
   display: flex;
   flex-direction: column;
@@ -248,23 +259,27 @@ body, html {
   align-items: center;
 }
 
+/* styles the logo */
 .video-upload-icon {
   height: 100px;
   width: 100px;
   margin-bottom: 20px;
 }
 
+/* Makes the description white*/
 .video-upload-icon-description {
   color: white;
   font-size: 20px;
 }
 
+/* makes the video take up all the space */
 .video {
   height: 100%;
   width: 100%;
   border-radius: 35px;
 }
 
+/* makes the metrics to be in a column */
 .video-metrics {
   display: flex;
   flex-direction: column;
@@ -275,17 +290,20 @@ body, html {
   font-size: 40px;
 }
 
+/* sizes the cointaner where the progress bars are going to be displayed */
 .metrics-container {
   height: 450px;
   width: 500px;
 }
 
+/* sytles the progress bars */
 .progress-bar-styling {
   margin: 40px 0px 40px 0px;
   background-color: transparent;
   border: solid white 2px;
 }
 
+/* sets the grid in which the two resouce cointer will be displayed */
 .video-resource-grid {
   display: grid;
   grid-template-columns: repeat(2,1fr);
@@ -299,11 +317,13 @@ body, html {
   width: 100%;
 }
 
+/* style the resource title */
 .video-resource-title {
   text-align: center;
   font-size: 25px;
 }
 
+/* styles the cointainer which the concepts will reside */
 .video-concept {
   display: grid;
   grid-template-columns: repeat(2,1fr);
@@ -315,7 +335,7 @@ body, html {
   margin: 0px 13px 0px 13px;
 }
 
-
+/* style the concept */
 .concept {
   all: unset;
   position: relative;
@@ -369,11 +389,13 @@ body, html {
   padding: 20px;
 } 
 
+/* styles the description title */
 .concept-description-title {
   font-weight: bold;
   font-size: 40px;
 }
 
+/* styles the links for the conepts */
 .concept-links {
   all: unset; 
   list-style: none;

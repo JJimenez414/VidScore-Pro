@@ -4,6 +4,7 @@ import VideoMetrics from './VideoMetrics'
 
 function VideoUploadComponent() {
   return (
+    // diplays the upload and metrics.
     <div className='component center-items'>
         
         <div className='video-upload-container'>

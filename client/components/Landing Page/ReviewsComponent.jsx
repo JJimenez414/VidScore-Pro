@@ -1,12 +1,16 @@
-import React from 'react'
+
 import Review from './Review'
 import userPic from '../../src/assets/me.jpg'
 function ReviewsComponent() {
   return (
+
+    // Not going to even try to explain everything but this dispalys the carousel.
     <div className='component'>
         <div className='carouselContainer'>
             <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
+                    
+                     {/* here is were we add the reviews. */}
                     <div className="carousel-item active">
                         <Review name="Jose Jimenez" review="ustomer Reviews should give customers genuine product feedback from fellow shoppers. We have a zero tolerance policy for any review designed to mislead" userPic={userPic}/>
                     </div>

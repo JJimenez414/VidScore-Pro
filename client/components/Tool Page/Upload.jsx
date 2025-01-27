@@ -4,19 +4,19 @@ function Upload({getVideo}) {
 
     function handleUpload(event) {
         event.preventDefault();
-        // checks if the user has uploaded a file, if so send the file to the DropBox.jsx class.
+        // checks if the user has uploaded a file, if so return the file.
         if (event.target.files.length != 0) {
-            getVideo(URL.createObjectURL(event.target.files[0]));
+            getVideo(URL.createObjectURL(event.target.files[0])); // make the FILE or BLOB into an url that we can use with the video tag.
         }   
-
-        console.log("hello")
     }
 
     return (
+        // creates an input for files of .mp4 and .mp3
         <label className='video-upload center-items' htmlFor='input-video' id='input-label'>
         
             <input type='file' id='input-video' hidden accept='.mp4, .mp3' onChange={handleUpload}/>
 
+            {/* diplays logo and text */}
             <div className='video-upload-icon-container'>
 
                 <img src={upload} alt="File drop log" className='video-upload-icon'/>

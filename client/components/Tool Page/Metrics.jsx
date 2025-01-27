@@ -1,7 +1,6 @@
-    import React from 'react'
-
-    function Metrics({option1 = 3, option2 = 10, option3 = 60, option4 = 80}) {
+    function Metrics({option1 = 90, option2 = 10, option3 = 60, option4 = 80}) {
         
+        // based on the score we will give it a different color.
         function background(percent) {
 
             if (percent <= 50) {
@@ -21,6 +20,8 @@
         
 
         return (
+
+            // diplays progress bars
             <div className='metrics-container'>
 
                 <div className="progress progress-bar-styling" role="progressbar" aria-label="Example with label" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style={{ height: "70px" }}>

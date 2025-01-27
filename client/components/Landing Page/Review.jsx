@@ -1,7 +1,9 @@
-import React from 'react'
+
 
 function Review({name = "", review = "", userPic = ""}) {
   return (
+
+    // This will serve as a container for the rivew that will be displayed in the carousel
     <div>
 
         <div className='container d-block'>

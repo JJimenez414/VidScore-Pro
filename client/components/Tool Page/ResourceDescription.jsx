@@ -4,7 +4,7 @@ import { useDisableBodyScroll } from './useDisableBodyScroll'
 function ResourceDescription({visibility = false, setVisibility = "", concept = "", description = ""}) {
 
   const descriptionRef = useRef();
-
+  // sets visibility for the description container
   function checkVisibility(visibility){
     if (visibility) {
       return 'concept-description-container'
@@ -15,6 +15,7 @@ function ResourceDescription({visibility = false, setVisibility = "", concept = 
 
   let containerCSS = checkVisibility(visibility);
 
+  // removes the overlay and description visibility to false.
   useEffect(() => {
     let handler = (e) => {
       if(!descriptionRef.current.contains(e.target)) {
@@ -34,8 +35,10 @@ function ResourceDescription({visibility = false, setVisibility = "", concept = 
   return (
     <>
 
+    {/* if true, display overlay */}
     <div className={visibility ? 'overlay' : 'unvisible'}></div>
 
+    {/* if container is active display the container */}
     <div className={containerCSS} ref={descriptionRef}>
       
       <p className='concept-description-title'>{concept}</p>
