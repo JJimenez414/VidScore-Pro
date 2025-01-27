@@ -1,0 +1,50 @@
+services:
+  orchestrator:
+    build:
+      context: ./orchestrator
+    ports:
+      - "8080:8080"
+    volumes:
+      - shared_data:/shared_data
+    depends_on:
+      - video_length_service
+      - video_resolution_service
+      - aspect_ratio_service
+      # - audio_analysis_service
+
+  video_length_service:
+    build:
+      context: ./video_length_service
+    ports:
+      - "8001:8001"
+    volumes:
+    - shared_data:/shared_data
+
+
+  video_resolution_service:
+    build:
+      context: ./video_resolution_service
+    ports:
+      - "8002:8002"
+    volumes:
+      - shared_data:/shared_data
+
+  aspect_ratio_service:
+    build:
+      context: ./aspect_ratio_service
+    ports:
+      - "8003:8003"
+    volumes:
+      - shared_data:/shared_data
+
+  # audio_analysis_service:
+  #   build:
+  #     context: ./audio_analysis_service
+  #   ports:
+  #     - "8004:8004"
+  #   volumes:
+  #     - shared_data:/shared_data
+
+volumes:
+  shared_data:
+    driver: local

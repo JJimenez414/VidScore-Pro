@@ -8,10 +8,14 @@ function VideoResources() {
   };
 
   return (
+
+    // continer that holds the resources.
     <div className='video-resource'>
 
+        {/* title of container */}
         <p className='font-caveat video-resource-title'> Resource </p>
 
+        {/* Displays the concepts. */}
         <VideoConcepts concepts={concepts}/>
     
     </div>

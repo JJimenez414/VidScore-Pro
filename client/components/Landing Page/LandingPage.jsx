@@ -7,10 +7,13 @@ import ReviewsComponent from "./ReviewsComponent"
 function LandingPage() {
   return (
     <div>
-
+        {/* displays introduction video */}
         <VideoComponent />
+        {/* Displays submit button */}
         <SubmitComponent />
+        {/* Displays the resource grid */}
         <ResouceComponent />
+        {/* Displays the reviews.  */}
         <ReviewsComponent />
 
     </div>

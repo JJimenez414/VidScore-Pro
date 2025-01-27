@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
     <ul className='footer'>
         <li>
-            logo
+          logo
         </li>
 
         <li>

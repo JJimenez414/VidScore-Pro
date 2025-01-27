@@ -1,8 +1,8 @@
-import React from 'react'
+
 import ScoreGrid from './ScoreGrid'
 import ConceptsGrid from './ConceptsGrid'
 import ResourcesGrid from './ResourcesGrid'
-import ReviewsComponent from './ReviewsComponent'
+
 function ResouceComponent() {
   return (
 
@@ -10,6 +10,7 @@ function ResouceComponent() {
 
         <div className='resourceComponent'>
 
+            {/* Displays the three related resources */}
             <ScoreGrid />
             <ConceptsGrid />
             <ResourcesGrid />

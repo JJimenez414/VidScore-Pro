@@ -8,10 +8,14 @@ function MarketingConcepts() {
   };
 
   return (
+
+    // container that holds the resources
     <div className='video-resource'>
         
+        {/* title of the continer */}
         <p className='font-caveat video-resource-title'> Marketing Concepts </p>
         
+        {/* displays the list of concepts. */}
         <VideoConcepts concepts = {concepts} />
 
     </div>

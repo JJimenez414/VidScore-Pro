@@ -4,6 +4,7 @@ import VideoResources from './VideoResources'
 
 function VideoResourceComponent() {
   return (
+    // diplays the resource grid and inside diplays marketing and video resources.
     <div className='component'>
 
         <div className='video-resource-grid'> 
