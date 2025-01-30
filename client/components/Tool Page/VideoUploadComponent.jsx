@@ -1,20 +1,22 @@
 import React from 'react'
 import VideoUpload from './VideoUpload'
 import VideoMetrics from './VideoMetrics'
+import { MetricsProvider } from './MetricsContext'
 
 function VideoUploadComponent() {
   return (
     // diplays the upload and metrics.
     <div className='component center-items'>
         
-        <div className='video-upload-container'>
+        <MetricsProvider>
+          <div className='video-upload-container'>
 
-            <VideoUpload />
+              <VideoUpload />
 
-            <VideoMetrics />
+              <VideoMetrics />
 
-        </div>
-
+          </div>
+        </MetricsProvider>
 
     </div>
   )

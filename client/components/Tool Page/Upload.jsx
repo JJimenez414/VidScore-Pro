@@ -12,7 +12,7 @@ function Upload({getVideo}) {
 
     return (
         // creates an input for files of .mp4 and .mp3
-        <label className='video-upload center-items' htmlFor='input-video' id='input-label'>
+        <label className='video-upload-label center-items' htmlFor='input-video' id='input-label'>
         
             <input type='file' id='input-video' hidden accept='.mp4, .mp3' onChange={handleUpload}/>
 

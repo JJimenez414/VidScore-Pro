@@ -28,7 +28,7 @@ export default class Request {
                 return response.json()
             })
             .then(data => {
-                console.log(data)
+                return data
             })
             .catch(error => console.log(error))
 

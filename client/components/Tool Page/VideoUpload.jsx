@@ -1,11 +1,13 @@
-import {React, useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import Upload from './Upload'
 import Video from './Video';
 import Request from '../APIRequest'
+import { useMetrics } from './MetricsContext';
 
 function VideoUpload() {
 
   const [video, getVideo] = useState(null);
+  const {setAspect, setLength, setResolution} = useMetrics();
 
   useEffect(() => {
 
@@ -16,7 +18,10 @@ function VideoUpload() {
 
         const response = await Request.postVideo(video); // stops the async function until the request finishes.
 
-        console.log(response);
+        setAspect(response['aspect']['aspect_boolean']); // TEMPORARY: We have to change this to the right data.
+        setLength(response['length']['length_boolean']); // TEMPORARY: We have to change this to the right data.
+        setResolution(response['resolution']['resolution_boolean']); // TEMPORARY: We have to change this to the right data.
+        console.log("Data has been saved")
 
       } catch (err) {
         console.error("Error uploading video", err);
